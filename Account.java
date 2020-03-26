@@ -11,8 +11,8 @@ public class Account {
   
   /**
    * 
-   * @param firstName
-   * @param lastName
+   * @param firstName The first name for the owner of the account
+   * @param lastName The last name for the owner of the account
    * This constructor creates an account
    */
   public Account(String firstName, String lastName) {
