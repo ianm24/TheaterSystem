@@ -67,6 +67,10 @@ public class TheaterSystemUI {
 		
 	}
 	
+	/**
+	 * Displays and event's information
+	 * @param event The event to display
+	 */
 	private void displayEventInfo(Event event) {
 		System.out.println(event.toString());
 	}
