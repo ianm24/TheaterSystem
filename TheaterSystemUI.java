@@ -67,8 +67,8 @@ public class TheaterSystemUI {
 		
 	}
 	
-	private void displayEventInfo() {
-		
+	private void displayEventInfo(Event event) {
+		System.out.println(event.toString());
 	}
 	
 	private void displaySeats() {
