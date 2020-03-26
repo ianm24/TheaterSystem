@@ -1,15 +1,22 @@
 package TheaterSystem;
 
-/*
- * Miles Littlejohn
+/**
+ * 
+ * @author Miles
+ * This is the User class to create a user
  */
 public class User extends Account {
   private String password;
   private String phoneNumber;
   
   
-  /*
-   * Creates a user account with a first and last name, password, and phone number
+  /**
+   * 
+   * @param firstName
+   * @param lastName
+   * @param password
+   * @param phoneNumber
+   * This constructor creates a User
    */
   public User (String firstName, String lastName, String password, String phoneNumber) {
     super(firstName, lastName);
