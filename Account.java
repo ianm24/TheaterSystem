@@ -1,15 +1,19 @@
 package TheaterSystem;
-/*
- * The account class
- * Miles Littlejohn
+/**
+ * 
+ * @author Miles
+ * This is the account class
  */
 public class Account {
   public String firstName;
   private String lastName;
   private int ticketsPurchased;
   
-  /*
-   * Creates an account with inputed first and last names
+  /**
+   * 
+   * @param firstName
+   * @param lastName
+   * This constructor creates an account
    */
   public Account(String firstName, String lastName) {
     this.firstName = firstName;
