@@ -15,7 +15,7 @@ public class Event {
 	 * Used to create a new Event
 	 * 
 	 * @param venue The venue the event takes place
-	 * @param theater The theater venue the event takes place
+	 * @param theater The theater the event takes place
 	 * @param startTime The start time of the event
 	 * @param endTime The end time of the event
 	 */
