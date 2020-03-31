@@ -27,7 +27,6 @@ public class Account {
 	public String getLastName() {
 		return this.lastName;
 	}
-	public String getPassword() {
-		
-	}
+	
+
 }
