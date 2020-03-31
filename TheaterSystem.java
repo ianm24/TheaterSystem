@@ -49,16 +49,16 @@ public class TheaterSystem {
 
 	}
 
-	public void printTicket(Event event) {
+	public String printTicket(Event event) {
 
 	}
 
-	public void leaveReview(int rating, String review) {
+	public void leaveReview(double rating, String review, Event event) {
 
 	}
 
-	public void deleteReview(int rating, String review) {
-
+	public void deleteReview(double rating, String review, Event event) {
+	  
 	}
 
 	public void saveToJSON() {
