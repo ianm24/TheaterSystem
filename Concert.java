@@ -38,7 +38,7 @@ public class Concert extends Show {
         musicians = performers[i];
       }
       
-      musicians = "\n" + performers[i];
+      musicians += "\n" + performers[i];
     }
     
     return super.toString() + "\nPerformers:" + musicians;
