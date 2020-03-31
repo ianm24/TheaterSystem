@@ -9,7 +9,7 @@ public class Concert extends Show {
   public String[] performers;
   
   /**
-   *@param venue        The venue the show is at
+   * @param venue       The venue the show is at
    * @param theater     The theater the show is at
    * @param startTime   The starting time of the show
    * @param endTime     The ending time of the show
@@ -43,7 +43,4 @@ public class Concert extends Show {
     
     return super.toString() + "\nPerformers:" + musicians;
   }
-  
-  
-  
 }
