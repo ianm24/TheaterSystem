@@ -20,9 +20,9 @@ public class Play extends Show {
    * @param description A short description of the show
    * @param ageRating   The recommended age rating for the show
    * @param price       The big boy question for the show a.k.a how much it costs
-   * @param actors      The actors for the movie
-   * @param producers   The producers for the movie
-   * @param directors   the directors for the movie 
+   * @param actors      The actors for the show
+   * @param producers   The producers for the show
+   * @param directors   the directors for the show 
    */
   public Play(Venue venue, Theater theater, String startTime, String endTime, String name, String description, 
       String ageRating, double price, String[] actors, String[] producers, String[] directors) {
