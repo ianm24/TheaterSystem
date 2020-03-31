@@ -8,16 +8,18 @@ public class TheaterSystem {
 	public ArrayList<Venue> venues;
 
 	public TheaterSystem(ArrayList<Account> accounts, ArrayList<Venue> venues) {
-
+		this.accounts = accounts;
+		this.venues = venues;
 	}
 
-	public void login(String firstName, String lastName, String phoneNumber, String password, bool isEmployee,
-			bool isAdmin) {
-
+	public boolean login(String firstName, String lastName, String password) {
+		for(Account account : accounts) {
+			
+		}
 	}
 
-	public void createAccount(String firstName, String lastName, String phoneNumber, String password, bool isEmployee,
-			bool isAdmin) {
+	public void createAccount(String firstName, String lastName, String phoneNumber, String password, boolean isEmployee,
+			boolean isAdmin) {
 
 	}
 
