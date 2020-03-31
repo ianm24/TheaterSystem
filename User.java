@@ -20,4 +20,13 @@ public class User extends Account {
 		this.password = password;
 		this.phoneNumber = phoneNumber;
 	}
+	
+	/**
+	 * getter method
+	 * @return password
+	 */
+	public String getPassword() {
+		return password;
+	}
+	
 }
