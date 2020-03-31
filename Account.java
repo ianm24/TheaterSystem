@@ -19,5 +19,12 @@ public class Account {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
-
+	
+	/**
+	 * getter method
+	 * @return the last name
+	 */
+	public String getLastName() {
+		return this.lastName;
+	}
 }
