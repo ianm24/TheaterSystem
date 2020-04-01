@@ -41,43 +41,43 @@ public class TheaterSystem {
 		return "Account created successfully";
 	}
 
-	public ArrayList<Event> searchEventName(String eventName) {
+	public ArrayList<Show> searchShowName(String showName) {
+		
+	}
+
+	public ArrayList<Show> searchGenre(String genre) {
 
 	}
 
-	public ArrayList<Event> searchGenre(String genre) {
+	public ArrayList<Show> searchRating(String rating) {
 
 	}
 
-	public ArrayList<Event> searchRating(String rating) {
+	public ArrayList<Show> searchAgeRating(String ageRating) {
 
 	}
 
-	public ArrayList<Event> searchAgeRating(String ageRating) {
+	public void addShow(Theater theater) {
 
 	}
 
-	public void addEvent(Theater theater) {
+	public void purchaseTicket(Show show) {
 
 	}
 
-	public void purchaseTicket(Event event) {
+	public void refundTicket(Show show) {
 
 	}
 
-	public void refundTicket(Event event) {
+	public String printTicket(Show show) {
 
 	}
 
-	public String printTicket(Event event) {
+	public void leaveReview(double rating, String review, Show show) {
 
 	}
 
-	public void leaveReview(double rating, String review, Event event) {
-
-	}
-
-	public void deleteReview(double rating, String review, Event event) {
+	public void deleteReview(double rating, String review, Show show) {
 	  
 	}
 
