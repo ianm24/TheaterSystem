@@ -87,8 +87,14 @@ public class TheaterSystem {
 
 	}
 
+	/**
+	 * 
+	 * @param show the show whose ticket is getting printed
+	 * @return a string with the information for the show
+	 */
 	public String printTicket(Show show) {
-
+	  return "Printing your ticket..." + "\nStart Time: " + show.startTime + " \nEnd Time: " + show.endTime + "Your event: "
+	      + show.name + "\nYour Seat: ";
 	}
 
 	/**
