@@ -109,8 +109,8 @@ public class TheaterSystem {
 	 * Removes the review off of a show
 	 */
 	public void deleteReview(double rating, String review, Show show) {
-	  if (show.userRating == rating && show.reviews.contains(review)) {
-	    show.userRating = 0;
+	  if (show.userRating.contains(rating) && show.reviews.contains(review)) {
+	    show.userRating.remove(rating);
 	    show.reviews.remove(review);
 	  }
 	}
