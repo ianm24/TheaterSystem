@@ -13,6 +13,7 @@ public class Show extends Event {
 	public double userRating;
 	public double price;
 	public ArrayList<String> reviews;
+	public String genre;
 
 	/**
 	 * 
@@ -27,13 +28,14 @@ public class Show extends Event {
 	 *                    Creates a Show
 	 */
 	public Show(Venue venue, Theater theater, String startTime, String endTime, String name, String description,
-			String ageRating, double price) {
+			String ageRating, double price, String genre) {
 		super(venue, theater, startTime, endTime);
 		this.name = name;
 		this.description = description;
 		this.ageRating = ageRating;
 		this.price = price;
 		this.userRating = 0.0;
+		this.genre = genre;
 	}
 
 	/**

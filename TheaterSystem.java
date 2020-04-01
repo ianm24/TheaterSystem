@@ -42,11 +42,29 @@ public class TheaterSystem {
 	}
 
 	public ArrayList<Show> searchShowName(String showName) {
-		
+		ArrayList<Show> matches = new ArrayList<Show>();
+		for(Venue venue : venues) {
+			for(Theater theater : venue.theaters) {
+				for(Show show : theater.shows) {
+					if(show.name.equalsIgnoreCase(showName))
+						matches.add(show);
+				}
+			}
+		}
+		return matches;
 	}
 
 	public ArrayList<Show> searchGenre(String genre) {
-
+		ArrayList<Show> matches = new ArrayList<Show>();
+		for(Venue venue : venues) {
+			for(Theater theater : venue.theaters) {
+				for(Show show : theater.shows) {
+					if(show.genre.equalsIgnoreCase(genre))
+						matches.add(show);
+				}
+			}
+		}
+		return matches;
 	}
 
 	public ArrayList<Show> searchRating(String rating) {

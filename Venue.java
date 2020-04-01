@@ -6,7 +6,7 @@ package TheaterSystem;
 import java.util.ArrayList;
 
 public class Venue {
-	private ArrayList<Theater> theaters;
+	public ArrayList<Theater> theaters;
 	private String name;
 
 	/**
