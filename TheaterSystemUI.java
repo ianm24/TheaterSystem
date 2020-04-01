@@ -1,31 +1,35 @@
 package TheaterSystem;
-
+import java.util.Scanner;
 /**
  * This is the class that displays the system to the user
  * 
- * @author Ian McDowell
+ * @author Rebekah Soard, Ian McDowell
  *
  */
 public class TheaterSystemUI {
+    public static void main(String[] args) {
+        TheaterSystemUI tsUI = new TheaterSystemUI();
+        Scanner key = new Scanner(System.in);
+        boolean quit = false;
+        while(quit == false) {
+	    System.out.println("Welcome to the Theater System.\nPlease select from the"
+	        + " following options:\n1. Login\n2. Create an account\n3. Continue as guest\n"
+	        + "4. quit");
+        int response = key.nextInt();
+        key.nextLine();
+        } 
+    }
+	
 
-	public static void main(String[] args) {
+	//private int checkUserType() {
 
-	}
-
-	public void run() {
-
-	}
-
-	private int checkUserType() {
-
-	}
+	//}
 
 	private void displayMainMenu() {
 
 	}
 
 	private void login() {
-
 	}
 
 	private void createAccount() {
@@ -85,3 +89,5 @@ public class TheaterSystemUI {
 
 	}
 }
+
+
