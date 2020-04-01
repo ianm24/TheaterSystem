@@ -91,12 +91,28 @@ public class TheaterSystem {
 
 	}
 
+	/**
+	 * @param rating is the rating of the show
+	 * @param review is the review of the show
+	 * @param show the name of the show being altered
+	 * Assigns a review to a specific show
+	 */
 	public void leaveReview(double rating, String review, Show show) {
-
+	  show.addRating(rating, review);
 	}
 
+	/**
+	 * 
+	 * @param rating is the pre-existing rating
+	 * @param review is the pre-existing review
+	 * @param show the show that's getting thre review removed
+	 * Removes the review off of a show
+	 */
 	public void deleteReview(double rating, String review, Show show) {
-	  
+	  if (show.userRating == rating && show.reviews.contains(review)) {
+	    show.userRating = 0;
+	    show.reviews.remove(review);
+	  }
 	}
 
 	public void saveToJSON() {
