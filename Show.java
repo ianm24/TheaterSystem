@@ -3,15 +3,15 @@ package TheaterSystem;
 import java.util.ArrayList;
 
 /**
- * 
+ *
  * @author Miles Creates the beginnings of a show
  */
 public class Show extends Event {
 	public String name;
 	public String description;
 	public String ageRating;
-	public double userRating;
-	public double price;
+	public ArrayList<Double> userRating;
+	public double price; 
 	public ArrayList<String> reviews;
 
 	/**
@@ -33,7 +33,6 @@ public class Show extends Event {
 		this.description = description;
 		this.ageRating = ageRating;
 		this.price = price;
-		this.userRating = 0.0;
 	}
 
 	/**
