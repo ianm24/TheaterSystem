@@ -2,16 +2,33 @@ package TheaterSystem;
 
 import java.util.ArrayList;
 
+/**
+ * The System that pulls all of the other classes together
+ * @author Tyron Schultz, Miles Littlejohn
+ *
+ */
 public class TheaterSystem {
 	private ArrayList<User> accounts;
 	public Account currentAccount;
 	public ArrayList<Venue> venues;
 
+	/**
+	 * constructor
+	 * @param accounts that are currently in the system
+	 * @param venues that are currently in the system
+	 */
 	public TheaterSystem(ArrayList<User> accounts, ArrayList<Venue> venues) {
 		this.accounts = accounts;
 		this.venues = venues;
 	}
 
+	/**
+	 * sets the currentAccount to the person who is logging in
+	 * @param firstName
+	 * @param lastName
+	 * @param password
+	 * @return true if the login is successful but false otherwise
+	 */
 	public boolean login(String firstName, String lastName, String password) {
 		for(User account : accounts) {
 			if(account.firstName.equals(firstName) && account.getLastName().equals(lastName) && account.getPassword().equals(password)) {
@@ -23,7 +40,17 @@ public class TheaterSystem {
 		}
 		return false;
 	}
-
+	
+	/**
+	 * Creates an account and adds it to the accounts arraylist
+	 * @param firstName
+	 * @param lastName
+	 * @param phoneNumber
+	 * @param password
+	 * @param isEmployee
+	 * @param isAdmin
+	 * @return confirmation message
+	 */
 	public String createAccount(String firstName, String lastName, String phoneNumber, String password, boolean isEmployee,
 			boolean isAdmin) {
 		if(isEmployee==true && isAdmin==true)
@@ -31,16 +58,24 @@ public class TheaterSystem {
 		if(isEmployee) {
 			Employee newAcc = new Employee(firstName, lastName, password, phoneNumber, isEmployee);
 			this.accounts.add(newAcc);
+			this.currentAccount = newAcc;
 		} else if(isAdmin) {
 			Admin newAcc = new Admin(firstName, lastName, password, phoneNumber, isEmployee);
 			this.accounts.add(newAcc);
+			this.currentAccount = newAcc;
 		} else {
 			User newAcc = new User(firstName, lastName, password, phoneNumber);
 			this.accounts.add(newAcc);
+			this.currentAccount = newAcc;
 		}
 		return "Account created successfully";
 	}
 
+	/**
+	 * returns an ArrayList of shows if the name matches
+	 * @param showName
+	 * @return ArrayList of the matching shows
+	 */
 	public ArrayList<Show> searchShowName(String showName) {
 		ArrayList<Show> matches = new ArrayList<Show>();
 		for(Venue venue : venues) {
@@ -54,6 +89,11 @@ public class TheaterSystem {
 		return matches;
 	}
 
+	/**
+	 * returns an ArrayList of shows if the genre matches
+	 * @param showGenre
+	 * @return ArrayList of the matching shows
+	 */
 	public ArrayList<Show> searchGenre(String genre) {
 		ArrayList<Show> matches = new ArrayList<Show>();
 		for(Venue venue : venues) {
@@ -66,9 +106,23 @@ public class TheaterSystem {
 		}
 		return matches;
 	}
-
-	public ArrayList<Show> searchRating(String rating) {
-
+	
+	/**
+	 * 
+	 * @param rating
+	 * @return
+	 */
+	public ArrayList<Show> searchRating(Double rating) {
+		ArrayList<Show> matches = new ArrayList<Show>();
+		for(Venue venue : venues) {
+			for(Theater theater : venue.theaters) {
+				for(Show show : theater.shows) {
+					if(Math.abs(show.getRating()-rating)<0.1)
+						matches.add(show);
+				}
+			}
+		}
+		return matches;
 	}
 
 	public ArrayList<Show> searchAgeRating(String ageRating) {

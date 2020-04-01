@@ -51,7 +51,22 @@ public class Show extends Event {
 	 * @param review a review left by a user
 	 */
 	public void addRating(double rating, String review) {
-		this.userRating = rating;
+		this.userRating.add(rating);
 		this.reviews.add(review);
+	}
+	
+	/**
+	 * helping method to get 
+	 * @return the average rating for the show
+	 */
+	public double getRating() {
+		double uRating = 0;
+		int num = 0;
+		for(double rating : userRating) {
+			uRating += rating;
+			num++;
+		}
+		uRating/= num;
+		return uRating;
 	}
 }
