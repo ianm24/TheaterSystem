@@ -13,7 +13,7 @@ public class TheaterSystem {
 	}
 
 	public boolean login(String firstName, String lastName, String password) {
-		for(Account account : accounts) {
+		for(User account : accounts) {
 			if(account.firstName.equals(firstName) && account.getLastName().equals(lastName) && account.getPassword().equals(password)) {
 				currentAccount = account;
 				return true;

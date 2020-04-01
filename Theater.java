@@ -11,13 +11,13 @@ import java.util.ArrayList;
  */
 public class Theater {
 	public ArrayList<Seat> seats;
-	public ArrayList<Event> events;
+	public ArrayList<Show> shows;
 	public Venue venueContaining;
 
 	public Theater(ArrayList<Seat> seats, Venue venueContaining) {
 		this.seats = seats;
 		this.venueContaining = venueContaining;
-		this.events = new ArrayList<Event>();
+		this.shows = new ArrayList<Show>();
 	}
 
 	/***
@@ -36,7 +36,8 @@ public class Theater {
 	 */
 	public void addMovie(String startTime, String endTime, String name, String description, String ageRating,
 			double price, String[] actors, String[] producers, String[] directors) {
-		this.events.add(Movie(startTime, endTime, name, description, ageRating, price, actors, producers, directors));
+		Movie movie = new Movie(this.venueContaining, this, startTime, endTime, name, description, ageRating, price, actors, producers, directors);
+		this.shows.add(movie);
 	}
 
 	/***
@@ -55,7 +56,8 @@ public class Theater {
 	 */
 	public void addPlay(String startTime, String endTime, String name, String description, String ageRating,
 			double price, String[] actors, String[] producers, String[] playwrites) {
-		this.events.add(Play(startTime, endTime, name, description, ageRating, price, actors, producers, playwrites));
+		Play play = new Play(this.venueContaining, this ,startTime, endTime, name, description, ageRating, price, actors, producers, playwrites);
+		this.shows.add(play);
 	}
 
 	/***
@@ -72,6 +74,7 @@ public class Theater {
 	 */
 	public void addConcert(String startTime, String endTime, String name, String description, String ageRating,
 			double price, String[] performers) {
-		this.events.add(Concert(startTime, endTime, name, description, ageRating, price, performers));
+		Concert concert = new Concert(this.venueContaining, this, startTime, endTime, name, description, ageRating, price, performers);
+		this.shows.add(concert);
 	}
 }
