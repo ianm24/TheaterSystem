@@ -25,8 +25,8 @@ public class Play extends Show {
    * @param directors   the directors for the show 
    */
   public Play(Venue venue, Theater theater, String startTime, String endTime, String name, String description, 
-      String ageRating, double price, String[] actors, String[] producers, String[] directors) {
-    super(venue, theater, startTime, endTime, name, description, ageRating, price);
+      String ageRating, double price, String genre, String[] actors, String[] producers, String[] directors) {
+    super(venue, theater, startTime, endTime, name, description, ageRating, price, genre);
     this.actors = actors;
     this.producers = producers;
     this.directors = directors;

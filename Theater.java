@@ -35,8 +35,8 @@ public class Theater {
 	 * @param directors   the directors of the movie
 	 */
 	public void addMovie(String startTime, String endTime, String name, String description, String ageRating,
-			double price, String[] actors, String[] producers, String[] directors) {
-		Movie movie = new Movie(this.venueContaining, this, startTime, endTime, name, description, ageRating, price, actors, producers, directors);
+			double price, String genre, String[] actors, String[] producers, String[] directors) {
+		Movie movie = new Movie(this.venueContaining, this, startTime, endTime, name, description, ageRating, price, genre, actors, producers, directors);
 		this.shows.add(movie);
 	}
 
@@ -55,8 +55,8 @@ public class Theater {
 	 * @param playwrites  the playwrites
 	 */
 	public void addPlay(String startTime, String endTime, String name, String description, String ageRating,
-			double price, String[] actors, String[] producers, String[] playwrites) {
-		Play play = new Play(this.venueContaining, this ,startTime, endTime, name, description, ageRating, price, actors, producers, playwrites);
+			double price, String genre, String[] actors, String[] producers, String[] playwrites) {
+		Play play = new Play(this.venueContaining, this ,startTime, endTime, name, description, ageRating, price, genre, actors, producers, playwrites);
 		this.shows.add(play);
 	}
 
@@ -73,8 +73,8 @@ public class Theater {
 	 * @param performers  the performers in the concert
 	 */
 	public void addConcert(String startTime, String endTime, String name, String description, String ageRating,
-			double price, String[] performers) {
-		Concert concert = new Concert(this.venueContaining, this, startTime, endTime, name, description, ageRating, price, performers);
+			double price, String genre, String[] performers) {
+		Concert concert = new Concert(this.venueContaining, this, startTime, endTime, name, description, ageRating, price, genre, performers);
 		this.shows.add(concert);
 	}
 }

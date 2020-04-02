@@ -21,8 +21,8 @@ public class Concert extends Show {
    * Takes in the basic information for a concert
    */
   public Concert (Venue venue, Theater theater, String startTime, String endTime, String name, String description,
-      String ageRating, double price, String[] performers) {
-   super(venue, theater, startTime, endTime, name, description, ageRating, price);
+      String ageRating, double price, String genre, String[] performers) {
+   super(venue, theater, startTime, endTime, name, description, ageRating, price, genre);
    this.performers = performers;
   }
   
