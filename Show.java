@@ -42,7 +42,7 @@ public class Show extends Event {
 	 */
 	public String toString() {
 		return super.toString() + "\nName:" + this.name + "\nDescription:" + this.description + "\nAge Rating:"
-				+ this.ageRating + "\nPrice: $" + this.price;
+				+ this.ageRating + "\nPrice: $" + this.price + "\nGenre: " + this.genre;
 	}
 
 	/**

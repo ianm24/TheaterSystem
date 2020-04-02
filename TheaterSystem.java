@@ -160,11 +160,11 @@ public class TheaterSystem {
 		
 	}
 
-	public void purchaseTicket(Show show) {
+	public String purchaseTicket(Show show) {
 		
 	}
 
-	public void refundTicket(Show show) {
+	public String refundTicket(Show show) {
 		
 	}
 
