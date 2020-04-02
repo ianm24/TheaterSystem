@@ -38,6 +38,23 @@ public class TheaterSystemUI {
         } 
         System.out.print("Thank you for using the Theater System.");
     }
+    
+    private void checkAccountType(String account) {
+      switch(account) {
+        case "User":
+          tsUI.displayUser();
+          break;
+        case "Employee":
+          tsUI.displayEmployee();
+          break;
+        case "Admin":
+          tsUI.displayAdmin();
+          break;
+        case "Fail":
+          System.out.println("Something has gone wrong. That account does not exist.");
+          return;
+      }
+    }
 	
 	//private void displayMainMenu() {
 
@@ -50,25 +67,55 @@ public class TheaterSystemUI {
 	  String lastName = key.next();
 	  System.out.println("Enter your password:");
 	  String password = key.next();
-	  String accountType = ts.login(firstName, lastName, password);
-	  switch(accountType) {
-	    case "User":
-	      tsUI.displayUser();
-	      break;
-	    case "Employee":
-	      tsUI.displayEmployee();
-	      break;
-	    case "Admin":
-	      tsUI.displayAdmin();
-	      break;
-	    case "Fail":
-	      System.out.println("That account does not exist.");
-	      return;
-	  }
+	  tsUI.checkAccountType(ts.login(firstName, lastName, password));
 	} 
 
 	private void createAccount() {
-
+	  //String firstName, String lastName, String phoneNumber, String password,
+	  //boolean isEmployee,boolean isAdmin
+	  boolean employeeLoop = true;
+	  boolean adminLoop = true;
+	  boolean isEmployee = false, isAdmin = false;
+	  System.out.println("Enter your first name:");
+      String firstName = key.next();
+      System.out.println("Enter your last name:");
+      String lastName = key.next();
+      System.out.println("Enter your password:");
+      String password = key.next();
+      System.out.println("Enter your phone number:");
+      String phoneNumber = key.next();
+      while (employeeLoop == true) {
+        System.out.println("Are you an Employee? Enter true or false:");
+        String eStatus = key.next();
+        if(eStatus.equalsIgnoreCase("true")) {
+         isEmployee = true;
+         employeeLoop = false;
+        }
+        else if(eStatus.equalsIgnoreCase("false")) {
+          isEmployee = false;
+          employeeLoop = false;
+        }
+        else {
+          System.out.println("Invalid Input.");
+        }
+      }
+      while (adminLoop == true) {
+        System.out.println("Are you an Admin? Enter true or false:");
+        String aStatus = key.next();
+        if(aStatus.equalsIgnoreCase("true")) {
+         isAdmin = true;
+         adminLoop = false;
+        }
+        else if(aStatus.equalsIgnoreCase("false")) {
+          isAdmin = false;
+          adminLoop = false;
+        }
+        else {
+          System.out.println("Invalid Input.");
+        }
+      }
+      ts.createAccount(firstName, lastName, phoneNumber, password, isEmployee, isAdmin);
+      tsUI.checkAccountType(ts.login(firstName, lastName, password));
 	}
 
 	private void displayGuest() {
