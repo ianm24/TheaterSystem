@@ -8,7 +8,7 @@ package TheaterSystem;
 public class Play extends Show {
   public String[] actors;
   public String[] producers;
-  public String[] directors;
+  public String[] playwrites;
   
   /**
    * 
@@ -22,14 +22,14 @@ public class Play extends Show {
    * @param price       The big boy question for the show a.k.a how much it costs
    * @param actors      The actors for the show
    * @param producers   The producers for the show
-   * @param directors   the directors for the show 
+   * @param playwrites  The playwrites for the show 
    */
   public Play(Venue venue, Theater theater, String startTime, String endTime, String name, String description, 
-      String ageRating, double price, String genre, String[] actors, String[] producers, String[] directors) {
+      String ageRating, double price, String genre, String[] actors, String[] producers, String[] playwrites) {
     super(venue, theater, startTime, endTime, name, description, ageRating, price, genre);
     this.actors = actors;
     this.producers = producers;
-    this.directors = directors;
+    this.playwrites = playwrites;
   }
   
   /**
@@ -61,10 +61,10 @@ public class Play extends Show {
     bosses += "\nDirectors: ";
     for (int i = 0; i < this.actors.length; i++) {
       if (i == 0) {
-        bosses = "\nActors: " + directors[i];
+        bosses = "\nActors: " + playwrites[i];
       }
       
-      bosses += "\n" + directors[i];
+      bosses += "\n" + playwrites[i];
     }
     
     return super.toString() + bosses;

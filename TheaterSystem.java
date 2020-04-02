@@ -49,11 +49,13 @@ public class TheaterSystem {
 				continue;
 			}
 		}
-		
 		return "Fail";
 	}
 	
-	public void updateAccountType() {
+	/**
+	 * Helper method that updates the 
+	 */
+	private void updateAccountType() {
 		if (currentAccount.getClass().getName().contains("User")) {
 			this.userAccountType = "User";
 		} else if (currentAccount.getClass().getName().contains("Employee")) {
@@ -166,24 +168,51 @@ public class TheaterSystem {
 		return matches;
 	}
 	
+	public Seat seatSearch(Theater theater, char row, int col) {
+		for(Seat seat : theater.seats) {
+			if(seat.row == row && seat.col == col && seat.isReserved == false)
+				return seat;
+		}
+		return null;
+	}
+	
+	public Seat nextSeatSearch(Theater theater) {
+		for(Seat seat : theater.seats)
+			if(seat.isReserved == false)
+				return seat;
+		return null;
+	}
+	
+
 	/**
 	 * 
-	 * @param theater
+	 * @param show
+	 * @return
+	 * Buys a random seat
 	 */
-	public void addShow(Theater theater) {
-		
-	}
-
-	public void purchaseTicket(Show show) {
+	public String purchaseTicket(Show show) {
 		
 	}
 	
+	/**
+	 * 
+	 * @param show
+	 * @param row
+	 * @param col
+	 * Buys a specific seat
+	 */
 	public void purchaseTicket(Show show, char row, int col) {
-		
+	  
 	}
 
-	public void refundTicket(Show show) {
-		
+	/**
+	 * 
+	 * @param show
+	 * @return
+	 * Refunds a pre-purchased ticket
+	 */
+	public String refundTicket(Show show) {
+		return "Ticket refunded";
 	}
 
 	/**
@@ -191,9 +220,9 @@ public class TheaterSystem {
 	 * @param show the show whose ticket is getting printed
 	 * @return a string with the information for the show
 	 */
-	public String printTicket(Show show) {
+	public String printTicket(Show show, Seat seat) {
 	  return "Printing your ticket..." + "\nStart Time: " + show.startTime + " \nEnd Time: " + show.endTime + "Your event: "
-	      + show.name + "\nYour Seat: ";
+	      + show.name + "\nYour Seat: " + seat.row + ":" + seat.col;
 	}
 
 	/**
