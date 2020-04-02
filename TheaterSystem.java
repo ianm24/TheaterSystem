@@ -174,10 +174,23 @@ public class TheaterSystem {
 		
 	}
 
+	/**
+	 * 
+	 * @param show
+	 * @return
+	 * Buys a random seat
+	 */
 	public String purchaseTicket(Show show) {
 		
 	}
 	
+	/**
+	 * 
+	 * @param show
+	 * @param row
+	 * @param col
+	 * Buys a specific seat
+	 */
 	public void purchaseTicket(Show show, char row, int col) {
 		
 	}
