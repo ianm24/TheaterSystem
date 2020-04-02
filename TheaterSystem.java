@@ -211,8 +211,14 @@ public class TheaterSystem {
 	  
 	}
 
+	/**
+	 * 
+	 * @param show
+	 * @return
+	 * Refunds a pre-purchased ticket
+	 */
 	public String refundTicket(Show show) {
-		
+		return "Ticket refunded";
 	}
 
 	/**
@@ -220,9 +226,9 @@ public class TheaterSystem {
 	 * @param show the show whose ticket is getting printed
 	 * @return a string with the information for the show
 	 */
-	public String printTicket(Show show) {
+	public String printTicket(Show show, Seat seat) {
 	  return "Printing your ticket..." + "\nStart Time: " + show.startTime + " \nEnd Time: " + show.endTime + "Your event: "
-	      + show.name + "\nYour Seat: ";
+	      + show.name + "\nYour Seat: " + seat.row + ":" + seat.col;
 	}
 
 	/**
