@@ -10,8 +10,9 @@ import java.util.ArrayList;
 public class TheaterSystem {
 	private ArrayList<User> accounts;
 	public Account currentAccount;
+	public int userAccountType;
 	public ArrayList<Venue> venues;
-
+	
 	/**
 	 * Default constructor for TheaterSystem that initializes the ArrayLists and loads from the JSON file 
 	 */
@@ -117,7 +118,7 @@ public class TheaterSystem {
 	}
 	
 	/**
-	 * 
+	 * Searches for all shows within 0.1 stars of the parameters
 	 * @param rating
 	 * @return
 	 */
@@ -161,6 +162,10 @@ public class TheaterSystem {
 	}
 
 	public void purchaseTicket(Show show) {
+		
+	}
+	
+	public void purchaseTicket(Show show, int row, char col) {
 		
 	}
 
