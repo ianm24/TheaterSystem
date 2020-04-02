@@ -7,14 +7,15 @@ import java.util.Scanner;
  *
  */
 public class TheaterSystemUI {
+  public static TheaterSystemUI tsUI = new TheaterSystemUI();
+  public static TheaterSystem ts = new TheaterSystem();
+  public static Scanner key = new Scanner(System.in);
+  public static boolean quit = false;
     public static void main(String[] args) {
-        TheaterSystemUI tsUI = new TheaterSystemUI();
-        Scanner key = new Scanner(System.in);
-        boolean quit = false;
         System.out.println("Welcome to the Theater System.");
         while(quit == false) {
 	      System.out.println("Please select from the following options:\n1. Login"
-	         + "\n2. Create an account\n3. Continue as guest\n4. quit");
+	         + "\n2. Create an account\n3. Continue as Guest\n4. quit");
           int response = key.nextInt();
           key.nextLine();
           switch (response) {
@@ -25,26 +26,46 @@ public class TheaterSystemUI {
               tsUI.createAccount();
               break;
             case 3:
-              tsUI.createAccount();
+              tsUI.displayGuest();
+              break;
             case 4:
               quit = true;
+              break;
             default:
               System.out.println("Invalid Selection");
+              break;
           }
         } 
+        System.out.print("Thank you for using the Theater System.");
     }
 	
-
-	//private int checkUserType() {
-
-	//}
-
 	//private void displayMainMenu() {
 
 	//}
 
 	private void login() {
-	}
+	  System.out.println("Enter your first name:");
+	  String firstName = key.next();
+	  System.out.println("Enter your last name:");
+	  String lastName = key.next();
+	  System.out.println("Enter your password:");
+	  String password = key.next();
+	  String accountType = ts.login(firstName, lastName, password);
+	  switch(accountType) {
+	    case "User":
+	      tsUI.displayUser();
+	      break;
+	    case "Employee":
+	      tsUI.displayEmployee();
+	      break;
+	    case "Admin":
+	      tsUI.displayAdmin();
+	      break;
+	    case "Fail":
+	      System.out.println("That account does not exist.");
+	      return;
+	  }
+	} 
 
 	private void createAccount() {
 
