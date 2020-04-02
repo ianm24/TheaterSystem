@@ -49,11 +49,13 @@ public class TheaterSystem {
 				continue;
 			}
 		}
-		
 		return "Fail";
 	}
 	
-	public void updateAccountType() {
+	/**
+	 * Helper method that updates the 
+	 */
+	private void updateAccountType() {
 		if (currentAccount.getClass().getName().contains("User")) {
 			this.userAccountType = "User";
 		} else if (currentAccount.getClass().getName().contains("Employee")) {
@@ -166,6 +168,20 @@ public class TheaterSystem {
 		return matches;
 	}
 	
+	public Seat seatSearch(Theater theater, char row, int col) {
+		for(Seat seat : theater.seats) {
+			if(seat.row == row && seat.col == col && seat.isReserved == false)
+				return seat;
+		}
+		return null;
+	}
+	
+	public Seat nextSeatSearch(Theater theater) {
+		for(Seat seat : theater.seats)
+			if(seat.isReserved == false)
+				return seat;
+		return null;
+	}
 	/**
 	 * 
 	 * @param theater
