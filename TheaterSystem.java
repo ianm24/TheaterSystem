@@ -13,6 +13,15 @@ public class TheaterSystem {
 	public ArrayList<Venue> venues;
 
 	/**
+	 * Default constructor for TheaterSystem that initializes the ArrayLists and loads from the JSON file 
+	 */
+	public TheaterSystem() {
+		accounts = new ArrayList<User>();
+		venues = new ArrayList<Venue>();
+		this.loadFromJSON();
+	}
+	
+	/**
 	 * constructor
 	 * @param accounts that are currently in the system
 	 * @param venues that are currently in the system
@@ -124,21 +133,39 @@ public class TheaterSystem {
 		}
 		return matches;
 	}
-
+	
+	/**
+	 * method to search by the age ratings of a movie
+	 * @param ageRating
+	 * @return an arrayList of matches to the rating
+	 */
 	public ArrayList<Show> searchAgeRating(String ageRating) {
-
+		ArrayList<Show> matches = new ArrayList<Show>();
+		for(Venue venue : venues) {
+			for(Theater theater : venue.theaters) {
+				for(Show show : theater.shows) {
+					if(show.ageRating.equalsIgnoreCase(ageRating))
+						matches.add(show);
+				}
+			}
+		}
+		return matches;
 	}
-
+	
+	/**
+	 * 
+	 * @param theater
+	 */
 	public void addShow(Theater theater) {
-
+		
 	}
 
 	public void purchaseTicket(Show show) {
-
+		
 	}
 
 	public void refundTicket(Show show) {
-
+		
 	}
 
 	/**
