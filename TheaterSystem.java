@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class TheaterSystem {
 	private ArrayList<User> accounts;
 	public Account currentAccount;
-	public int userAccountType;
+	public String userAccountType;
 	public ArrayList<Venue> venues;
 	
 	/**
@@ -39,16 +39,28 @@ public class TheaterSystem {
 	 * @param password
 	 * @return true if the login is successful but false otherwise
 	 */
-	public boolean login(String firstName, String lastName, String password) {
+	public String login(String firstName, String lastName, String password) {
 		for(User account : accounts) {
 			if(account.firstName.equals(firstName) && account.getLastName().equals(lastName) && account.getPassword().equals(password)) {
 				currentAccount = account;
-				return true;
+				updateAccountType();
+				return this.userAccountType;
 			} else {
 				continue;
 			}
 		}
-		return false;
+		
+		return "Fail";
+	}
+	
+	public void updateAccountType() {
+		if (currentAccount.getClass().getName().contains("User")) {
+			this.userAccountType = "User";
+		} else if (currentAccount.getClass().getName().contains("Employee")) {
+			this.userAccountType = "Employee";
+		} else if (currentAccount.getClass().getName().contains("Admin")) {
+			this.userAccountType = "Admin";
+		}
 	}
 	
 	/**
@@ -77,6 +89,7 @@ public class TheaterSystem {
 			User newAcc = new User(firstName, lastName, password, phoneNumber);
 			this.accounts.add(newAcc);
 			this.currentAccount = newAcc;
+			this.updateAccountType();
 		}
 		return "Account created successfully";
 	}
@@ -165,7 +178,7 @@ public class TheaterSystem {
 		
 	}
 	
-	public void purchaseTicket(Show show, int row, char col) {
+	public void purchaseTicket(Show show, char row, int col) {
 		
 	}
 
