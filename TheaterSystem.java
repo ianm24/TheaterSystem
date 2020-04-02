@@ -182,13 +182,7 @@ public class TheaterSystem {
 				return seat;
 		return null;
 	}
-	/**
-	 * 
-	 * @param theater
-	 */
-	public void addShow(Theater theater) {
-		
-	}
+	
 
 	/**
 	 * 
