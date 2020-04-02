@@ -20,6 +20,7 @@ public class TheaterSystem {
 		accounts = new ArrayList<User>();
 		venues = new ArrayList<Venue>();
 		this.loadFromJSON();
+		this.userAccountType = "Guest";
 	}
 	
 	/**
@@ -191,7 +192,15 @@ public class TheaterSystem {
 	 * Buys a random seat
 	 */
 	public String purchaseTicket(Show show) {
-		
+		String print = "";
+		Seat userSeat = this.nextSeatSearch(show.theater);
+		this.currentAccount.ticketsPurchased++;
+		if(this.currentAccount.ticketsPurchased == 11) {
+			print += "Congratulations this ticket is free!\n";
+			this.currentAccount.ticketsPurchased -= 10;
+		}
+		print+= this.printTicket(show, userSeat);
+		return print;
 	}
 	
 	/**
@@ -201,8 +210,16 @@ public class TheaterSystem {
 	 * @param col
 	 * Buys a specific seat
 	 */
-	public void purchaseTicket(Show show, char row, int col) {
-	  
+	public String purchaseTicket(Show show, char row, int col) {
+		String print = "";
+		Seat userSeat = this.seatSearch(show.theater, row, col);
+		this.currentAccount.ticketsPurchased++;
+		if(this.currentAccount.ticketsPurchased == 11) {
+			print += "Congratulations this ticket is free!\n";
+			this.currentAccount.ticketsPurchased -= 10;
+		}
+		print+= this.printTicket(show, userSeat);
+		return print;
 	}
 
 	/**

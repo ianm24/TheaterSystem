@@ -7,7 +7,7 @@ package TheaterSystem;
 public class Account {
 	public String firstName;
 	private String lastName;
-	private int ticketsPurchased;
+	public int ticketsPurchased;
 
 	/**
 	 * 
