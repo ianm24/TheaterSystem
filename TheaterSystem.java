@@ -73,7 +73,7 @@ public class TheaterSystem {
 	}
 
 	/**
-	 * Creates an account and adds it to the accounts arraylist
+	 * Creates an account and adds it to the accounts ArrayList
 	 * 
 	 * @param firstName
 	 * @param lastName
@@ -291,6 +291,27 @@ public class TheaterSystem {
 	}
 	public void addEvent(Theater theater, Show show) {
 		theater.shows.add(show);
+	}
+	
+	public String displaySeats(Theater theater) {
+		String seats = "";
+		for (int i = 0; i<26; i++) {
+			seats += i;
+		}
+		seats += "\n";
+		for (int i = 0; i<26; i++) {
+			seats += ('a'+i);
+			for (char j = 'a'; j < 'z'; j++) {
+				if(this.seatSearch(theater, j, i)!= null) {
+					seats += " " + j + i + " ";
+				} else {
+					seats += " X ";
+				}
+			}
+			seats += "\n";
+		}
+		
+		return seats;
 	}
 
 	public void saveToJSON() {

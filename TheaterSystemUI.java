@@ -1,4 +1,5 @@
 package TheaterSystem;
+import java.util.ArrayList;
 import java.util.Scanner;
 /**
  * This is the class that displays the system to the user
@@ -126,24 +127,31 @@ public class TheaterSystemUI {
           case 1:
             tsUI.displayEventList();
             break;
+            
           case 2:
             tsUI.searchByName();
             break;
+            
           case 3:
             tsUI.searchByGenre();
             break;
+            
           case 4:
             tsUI.searchByRating();
             break;
+            
           case 5:
             tsUI.displayEventInfo();
             break;
+            
           case 6:
             tsUI.purchaseTicket();
             break;
+            
           case 7:
             quit = true;
             break;
+            
           default:
             System.out.println("Invalid Selection");
             break;
@@ -245,9 +253,11 @@ public class TheaterSystemUI {
             break;
             
           case 9:
+            tsUI.addEvent();
             break;
             
           case 10:
+            tsUI.removeEvent();
             break;
             
           case 11:
@@ -311,7 +321,7 @@ public class TheaterSystemUI {
             break;
             
           case 11:
-            tsUI.removeReview();
+            tsUI.removeEvent();
             break;
             
           case 12:
@@ -327,12 +337,12 @@ public class TheaterSystemUI {
 	}
 
 	private void searchByName() {
-	  System.out.println("Please enter the name of the show you want to find:");
-	  ts.searchShowName(key.nextLine());
+	
+	   
 	}
 
 	private void searchByGenre() {
-
+	  
 	}
 
 	private void searchByRating() {
@@ -340,7 +350,62 @@ public class TheaterSystemUI {
 	}
 
 	private void addEvent() {
-
+	  System.out.println("What type of event would you like to add? \n1. Movie \n2. Play \n3. Concert");
+	  boolean quit = false;
+	  int response = key.nextInt();
+	  key.nextLine();
+	  
+	  
+	  while (quit != true) {
+	    switch (response) {
+	      case 1:
+	        System.out.println("Please enter the movie's name:");
+	        String name = key.nextLine();
+	        
+	        System.out.println("Please enter an appropriate description:");
+	        String description = key.nextLine();
+	        
+	        System.out.println("Please enter the ageRating of the movie choose from: G, PG, PG-13, R");
+	        String ageRating = null;
+	        boolean ageLoop = true;
+	        while (ageLoop != false) {
+	          ageRating  = key.nextLine();
+	          
+	          if (ageRating.equals("G") || ageRating.equals("PG") || ageRating.equals("PG-13") || ageRating.equals("R")) {
+	            ageLoop = false;
+	          }
+	          
+	          System.out.println("Please enter a valid response: G, PG, PG-13, R");
+	        }
+	        
+	        System.out.println("Please enter the price for the tickets:");
+	        double price = key.nextDouble();
+	        key.nextLine();
+	        
+	        System.out.println("Please enter the genre of the movie: Action, Adventure, Childrens, Comedy, Drama, Family, Horror, and Romance");
+	        String genre = null;
+	        boolean genreLoop = true;
+	        while (genreLoop != false) {
+	          genre = key.nextLine();
+	          
+	          if (genre.equals("Action") || genre.equals("Adventure") || genre.equals("Childrens") ||  genre.equals("Comedy") || genre.equals("Drama") ||
+	              genre.equals("Family") || genre.equals("Horror") || genre.equals("Romance")) {
+	                genreLoop = false;
+	              }
+	          
+	          System.out.println("Please enter one of the following genres: Action, Adventure, Childrens, Comedy, Drama, Family, Horror, and Romance");
+	        }
+	        
+	        System.out.println("Please enter all the actors for the movie. Enter  when complete.");
+	        boolean actorLoop = true; 
+	    }
+	  }
+	  
+	  ts.addEvent(theater, show);
+	}
+	
+	private void removeEvent() {
+	  
 	}
 
 	private void displayEventList() {
@@ -356,8 +421,8 @@ public class TheaterSystemUI {
 		//System.out.println(event.toString());
 	}
 
-	private void displaySeats() {
-
+	private void displaySeats(Theater theater) {
+		ts.displaySeats(theater);
 	}
 
 	private void purchaseTicket() {
