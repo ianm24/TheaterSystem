@@ -36,6 +36,7 @@ public class TheaterSystemUI {
               break;
           }
         } 
+        ts.saveToJSON();
         System.out.print("Thank you for using the Theater System.");
     }
     
