@@ -370,7 +370,7 @@ public class TheaterSystemUI {
 	}
 
 	private void displaySeats(Theater theater) {
-		
+		ts.displaySeats(theater);
 	}
 
 	private void purchaseTicket() {
