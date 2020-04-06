@@ -24,7 +24,6 @@ public class JSONHandler extends JSONConstants{
 		ArrayList<Venue> venues = new ArrayList<Venue>();
 		try {
 			FileReader reader = new FileReader(VENUES_FILENAME);
-			JSONParser parser = new JSONParser();
 			JSONArray JSONVenues = (JSONArray)new JSONParser().parse(reader);
 			for(int i = 0; i < JSONVenues.size(); i++) {
 				JSONObject JSONVenue = (JSONObject)JSONVenues.get(i);
@@ -70,6 +69,9 @@ public class JSONHandler extends JSONConstants{
 						String[] directors = (String[])JSONMovie.get(MOVIE_DIRECTORS);
 						Movie movie = new Movie(venue,venue.theaters.get(j),startTime,
 								endTime,name,description,ageRating,price,genre,actors,producers,directors);
+						for(int rev = 0; rev < reviews.length; rev++) {
+							movie.addRating(userRating[rev], reviews[rev]);
+						}
 						shows.add(movie);
 					}
 					JSONArray JSONPlays = (JSONArray)JSONShows.get(PLAYS);
@@ -89,6 +91,9 @@ public class JSONHandler extends JSONConstants{
 						String[] playwrites = (String[])JSONPlay.get(PLAY_PLAYWRITES);
 						Play play = new Play(venue,venue.theaters.get(j),startTime,
 								endTime,name,description,ageRating,price,genre,actors,producers,playwrites);
+						for(int rev = 0; rev < reviews.length; rev++) {
+							play.addRating(userRating[rev], reviews[rev]);
+						}
 						shows.add(play);
 					}
 					JSONArray JSONConcerts = (JSONArray)JSONShows.get(CONCERTS);
@@ -106,6 +111,9 @@ public class JSONHandler extends JSONConstants{
 						String[] performers = (String[])JSONConcert.get(CONCERT_PERFORMERS);
 						Concert concert = new Concert(venue,venue.theaters.get(j),startTime,
 								endTime,name,description,ageRating,price,genre,performers);
+						for(int rev = 0; rev < reviews.length; rev++) {
+							concert.addRating(userRating[rev], reviews[rev]);
+						}
 						shows.add(concert);
 					}
 					venue.theaters.get(j).shows = shows;
@@ -118,7 +126,7 @@ public class JSONHandler extends JSONConstants{
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return new ArrayList<Venue>();
 	}
 	
 	/**
@@ -129,7 +137,6 @@ public class JSONHandler extends JSONConstants{
 		ArrayList<User> users = new ArrayList<User>();
 		try {
 			FileReader reader = new FileReader(ACCOUNTS_FILENAME);
-			JSONParser parser = new JSONParser();
 			JSONArray JSONUsers = (JSONArray)new JSONParser().parse(reader);
 			for(int i = 0; i < JSONUsers.size(); i++) {
 				JSONObject JSONUser = (JSONObject)JSONUsers.get(i);
@@ -155,9 +162,13 @@ public class JSONHandler extends JSONConstants{
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return new ArrayList<User>();
 	}
 
+	/**
+	 * Saves accounts to a JSON file
+	 * @param users ArrayList of user accounts
+	 */
 	public static void saveAccounts(ArrayList<User> users) {
 		JSONArray jsonUsers = new JSONArray();
 		
@@ -173,6 +184,126 @@ public class JSONHandler extends JSONConstants{
 		}
 	}
 	
+	/**
+	 * Saves venues to a JSON file
+	 * @param venues ArrayList of venues
+	 */
+	public static void saveVenues(ArrayList<Venue> venues) {
+		JSONArray jsonVenues = new JSONArray();
+		
+		for(int i = 0; i < venues.size(); i++ ) {
+			jsonVenues.add(getVenueJSON(venues.get(i)));
+		}
+		
+		try(FileWriter file = new FileWriter(VENUES_FILENAME)) {
+			file.write(jsonVenues.toJSONString());
+			file.flush();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Converts Venue object to JSON object
+	 * @param venue Venue to be converted
+	 * @return JSONObject with Venue information
+	 */
+	public static JSONObject getVenueJSON(Venue venue) {
+		JSONObject venueDetails = new JSONObject();
+		venueDetails.put(VENUE_NAME, venue.getName());
+		JSONArray theaters = new JSONArray();
+		for(int i = 0; i < venue.theaters.size(); i++) {
+			theaters.add(getTheaterJSON(venue.theaters.get(i)));
+		}
+		venueDetails.put(THEATERS, theaters);
+		return venueDetails;
+	}
+
+	/**
+	 * Converts Theater object to JSON Object
+	 * @param theater Theater to convert
+	 * @return JSON object with theater data
+	 */
+	public static JSONObject getTheaterJSON(Theater theater) {
+		JSONObject theaterDetails = new JSONObject();
+		JSONArray shows = new JSONArray();
+		JSONArray movies = new JSONArray();
+		JSONArray plays = new JSONArray();
+		JSONArray concerts = new JSONArray();
+		JSONArray seats = new JSONArray();
+		for(int i = 0; i < theater.shows.size(); i++) {
+			Show currShow = theater.shows.get(i);
+			if(currShow.getClass().getName().contains("Movie")) {
+				movies.add(getShowJSON(currShow));
+			} else if(currShow.getClass().getName().contains("Play")) {
+				plays.add(getShowJSON(currShow));
+			} else if(currShow.getClass().getName().contains("Concert")) {
+				concerts.add(getShowJSON(currShow));
+			}
+		}
+		shows.add(movies);
+		shows.add(plays);
+		shows.add(concerts);
+		theaterDetails.put(SHOWS, shows);
+		for(int i = 0; i < theater.seats.size(); i++) {
+			shows.add(getSeatJSON(theater.seats.get(i)));
+		}
+		theaterDetails.put(THEATER_SEATS, seats);
+		return theaterDetails;
+	}
+	
+	/**
+	 * Converts Show object to JSON Object
+	 * @param show Show to convert
+	 * @return JSON object with show data
+	 */
+	public static JSONObject getShowJSON(Show show) {
+		JSONObject showDetails = new JSONObject();
+		showDetails.put(EVENT_START_TIME, show.startTime);
+		showDetails.put(EVENT_END_TIME, show.endTime);
+		showDetails.put(EVENT_NAME, show.name);
+		showDetails.put(EVENT_DESCRIPTION, show.description);
+		showDetails.put(EVENT_AGE_RATING, show.ageRating);
+		showDetails.put(EVENT_USER_RATING, show.userRating);
+		showDetails.put(EVENT_PRICE, show.price);
+		showDetails.put(EVENT_REVIEWS, show.reviews);
+		if(show.getClass().getName().contains("Movie")) {
+			Movie movie = (Movie) show;
+			showDetails.put(EVENT_ACTORS, movie.actors);
+			showDetails.put(EVENT_PRODUCERS, movie.producers);
+			showDetails.put(MOVIE_DIRECTORS, movie.directors);
+		} else if(show.getClass().getName().contains("Play")) {
+			Play play = (Play) show;
+			showDetails.put(EVENT_ACTORS, play.actors);
+			showDetails.put(EVENT_PRODUCERS, play.producers);
+			showDetails.put(PLAY_PLAYWRITES, play.playwrites);
+		} else if(show.getClass().getName().contains("Concert")) {
+			Concert concert = (Concert) show;
+			showDetails.put(CONCERT_PERFORMERS, concert.performers);
+		}
+		
+		return showDetails;
+	}
+	
+	/**
+	 * Converts Seat object to JSON Object
+	 * @param seat Seat to convert
+	 * @return JSON object with seat data
+	 */
+	public static JSONObject getSeatJSON(Seat seat) {
+		JSONObject seatDetails = new JSONObject();
+		seatDetails.put(SEATS_HANDICAPABLE, seat.isHandicapable);
+		seatDetails.put(SEATS_RESERVED, seat.isReserved);
+		seatDetails.put(SEATS_ROW, seat.row);
+		seatDetails.put(SEATS_COL, seat.col);
+		return seatDetails;
+	}
+	
+	/**
+	 * Converts Account object to JSON object
+	 * @param user User to be converted
+	 * @return JSON object with user data
+	 */
 	public static JSONObject getAccountJSON(User user) {
 		JSONObject accountDetails = new JSONObject();
 		accountDetails.put(USER_FIRST_NAME, user.firstName);
