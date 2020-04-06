@@ -181,6 +181,13 @@ public class TheaterSystem {
 		return matches;
 	}
 
+	/**
+	 * This returns a specific seat given a row and column 
+	 * @param theater
+	 * @param row
+	 * @param col
+	 * @return
+	 */
 	public Seat seatSearch(Theater theater, char row, int col) {
 		for (Seat seat : theater.seats) {
 			if (seat.row == row && seat.col == col && seat.isReserved == false)

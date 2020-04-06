@@ -337,7 +337,12 @@ public class TheaterSystemUI {
 	}
 
 	private void searchByName() {
-	
+		System.out.println("What is the name of the show you would like to search for?");
+		String showName = key.nextLine();
+		ArrayList<Show> results = ts.searchShowName(showName);
+		for(Show show : results) {
+			System.out.println(show.toString());
+		}
 	   
 	}
 
