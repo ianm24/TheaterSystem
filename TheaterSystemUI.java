@@ -356,8 +356,8 @@ public class TheaterSystemUI {
 		//System.out.println(event.toString());
 	}
 
-	private void displaySeats() {
-
+	private void displaySeats(Theater theater) {
+		
 	}
 
 	private void purchaseTicket() {

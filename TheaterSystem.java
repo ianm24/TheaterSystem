@@ -73,7 +73,7 @@ public class TheaterSystem {
 	}
 
 	/**
-	 * Creates an account and adds it to the accounts arraylist
+	 * Creates an account and adds it to the accounts ArrayList
 	 * 
 	 * @param firstName
 	 * @param lastName
