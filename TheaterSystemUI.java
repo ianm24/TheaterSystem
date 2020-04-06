@@ -154,7 +154,7 @@ public class TheaterSystemUI {
       while(quit == false) {
         System.out.println("Welcome, " + ts.currentAccount.firstName + "!\nPlease select from the following options:\n1. Display the list of events"
            + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating\n5. Display an event's information"
-           + "\n6. Purchase ticket \n7. Get a refund \n8. Leave a review \n9.Quit");
+           + "\n6. Purchase ticket \n7. Get a refund \n8. Leave a review \n9. Quit");
         int response = key.nextInt();
         key.nextLine();
         switch (response) {
@@ -206,7 +206,66 @@ public class TheaterSystemUI {
 	}
 
 	private void displayAdmin() {
-	  
+	  while(quit == false) {
+        System.out.println("Welcome, Admin: " + ts.currentAccount.firstName + "!\nPlease select from the following options:\n1. Display the list of events"
+           + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating\n5. Display an event's information"
+           + "\n6. Purchase ticket \n7. Get a refund \n8. Leave a review \n9. Remove a review \n10. Add show \n11. Remove show \n12. Quit");
+        int response = key.nextInt();
+        key.nextLine();
+        switch (response) {
+          case 1:
+            tsUI.displayEventList();
+            break;
+            
+          case 2:
+            tsUI.searchByName();
+            break;
+            
+          case 3:
+            tsUI.searchByGenre();
+            break;
+            
+          case 4:
+            tsUI.searchByRating();
+            break;
+            
+          case 5: 
+            tsUI.displayEventInfo();
+            break;
+            
+          case 6:
+            tsUI.purchaseTicket();
+            break;
+            
+          case 7:
+            tsUI.getRefund();
+            break;
+            
+          case 8:
+            tsUI.leaveReview();
+            break;
+            
+          case 9:
+            tsUI.removeReview();
+            break;
+            
+          case 10:
+            tsUI.addEvent();
+            break;
+            
+          case 11:
+            tsUI.removeReview();
+            break;
+            
+          case 12:
+            quit = true;
+            break;
+            
+          default:
+            System.out.println("Invalid Selection");
+            break;
+        }
+      } 
 	}
 
 	private void searchByName() {
@@ -251,6 +310,10 @@ public class TheaterSystemUI {
 	}
 	
 	private void leaveReview() {
+	  
+	}
+	
+	private void removeReview() {
 	  
 	}
 }
