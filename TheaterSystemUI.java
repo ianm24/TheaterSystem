@@ -368,6 +368,7 @@ public class TheaterSystemUI {
 	        System.out.println("Please enter the ageRating of the movie choose from: G, PG, PG-13, R");
 	        String ageRating = null;
 	        boolean ageLoop = true;
+	       
 	        while (ageLoop != false) {
 	          ageRating  = key.nextLine();
 	          
@@ -385,6 +386,7 @@ public class TheaterSystemUI {
 	        System.out.println("Please enter the genre of the movie: Action, Adventure, Childrens, Comedy, Drama, Family, Horror, and Romance");
 	        String genre = null;
 	        boolean genreLoop = true;
+	        
 	        while (genreLoop != false) {
 	          genre = key.nextLine();
 	          
@@ -396,8 +398,17 @@ public class TheaterSystemUI {
 	          System.out.println("Please enter one of the following genres: Action, Adventure, Childrens, Comedy, Drama, Family, Horror, and Romance");
 	        }
 	        
-	        System.out.println("Please enter all the actors for the movie. Enter  when complete.");
-	        boolean actorLoop = true; 
+	        System.out.println("Please enter the number of actors for the movie,"
+	            + "followed by all the actors for the movie.");
+	        System.out.println("Enter the number of actors.");
+	        int actorNum = key.nextInt();
+	        
+	        String[] actors = new String[actorNum];
+	        for (int i = 0; i < actors.length; i++) {
+	          System.out.println("Enter the name of the actor:");
+	          actors[i] = key.nextLine();
+	        }
+	        
 	    }
 	  }
 	  
