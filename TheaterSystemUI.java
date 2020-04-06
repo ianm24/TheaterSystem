@@ -398,15 +398,16 @@ public class TheaterSystemUI {
 	          if (genre.equals("Action") || genre.equals("Adventure") || genre.equals("Childrens") ||  genre.equals("Comedy") || genre.equals("Drama") ||
 	              genre.equals("Family") || genre.equals("Horror") || genre.equals("Romance")) {
 	                genreLoop = false;
+	              } else {
+	                System.out.println("Please enter one of the following genres: Action, Adventure, Childrens, Comedy, Drama, Family, Horror, and Romance");
 	              }
-	          
-	          System.out.println("Please enter one of the following genres: Action, Adventure, Childrens, Comedy, Drama, Family, Horror, and Romance");
 	        }
 	        
 	        System.out.println("Please enter the number of actors for the movie,"
-	            + "followed by all the actors for the movie.");
+	            + "followed by all the actors for the movie:");
 	        System.out.println("Enter the number of actors.");
 	        int actorNum = key.nextInt();
+	        key.nextLine();
 	        
 	        String[] actors = new String[actorNum];
 	        for (int i = 0; i < actors.length; i++) {
@@ -414,6 +415,78 @@ public class TheaterSystemUI {
 	          actors[i] = key.nextLine();
 	        }
 	        
+	        System.out.println("Please enter the number of producers for the movie,"
+                + "followed by all the producers for the movie:");
+            System.out.println("Enter the number of producers.");
+            int producerNum = key.nextInt();
+            key.nextLine();
+            
+            String[] producers = new String[producerNum];
+            for (int i = 0; i < producers.length; i++) {
+              System.out.println("Enter the name of the producer:");
+              producers[i] = key.nextLine();
+            }
+            
+            System.out.println("Please enter the number of directors for the movie,"
+                + "followed by all the directors for the movie:");
+            System.out.println("Enter the number of directors.");
+            int directorNum = key.nextInt();
+            key.nextLine();
+            
+            String[] directors = new String[directorNum];
+            for (int i = 0; i < directors.length; i++) {
+              System.out.println("Enter the name of the directors:");
+              directors[i] = key.nextLine();
+            }
+	        
+            System.out.println("Please enter the start time for the movie in the hh/mm AM/PM format with a space in-between the time and AM or PM:");
+            boolean startLoop = true;
+            String startTime = key.nextLine();
+            while (startLoop != false) {
+              
+              
+              int hour = Integer.parseInt(startTime.substring(0,1));
+              int minute = Integer.parseInt(startTime.substring(3,4));
+              String am_PM = startTime.substring(6,7);
+              if (hour > 13 || hour < 0) {
+                System.out.println("Hour invalid, please enter valid time.");
+              } else if (minute >= 60 || minute < 0) {
+                System.out.println("Minute invalid, please enter valid time.");
+              } else if(!am_PM.equalsIgnoreCase("AM") || !am_PM.equalsIgnoreCase("PM")) {
+                System.out.println("Please enter AM or PM one space after the time");
+              }
+              
+              startLoop = false;
+            }
+            
+            
+            System.out.println("Please enter the end time for the movie:");
+            boolean endLoop = true;
+            String endTime = key.nextLine();
+            while (endLoop != false) {
+              
+              
+              int hour = Integer.parseInt(endTime.substring(0,1));
+              int minute = Integer.parseInt(endTime.substring(3,4));
+              String am_PM = endTime.substring(6,7);
+              if (hour > 13 || hour < 0) {
+                System.out.println("Hour invalid, please enter valid time.");
+              } else if (minute >= 60 || minute < 0) {
+                System.out.println("Minute invalid, please enter valid time.");
+              } else if(!am_PM.equalsIgnoreCase("AM") || !am_PM.equalsIgnoreCase("PM")) {
+                System.out.println("Please enter AM or PM one space after the time.");
+              }
+              
+              endLoop = false;
+            }
+            
+            System.out.println("Enter the venue that the movie is going to be shown at:");
+            String venueName = key.nextLine();
+            Venue findVenue = new Venue(venueName);
+            
+            for (Venue findVenue : ts.venues) {
+              if (findVenue.getName() =)
+            }
 	    }
 	  }
 	  
