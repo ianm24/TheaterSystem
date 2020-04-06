@@ -414,7 +414,14 @@ public class TheaterSystemUI {
 	}
 
 	private void displayEventList() {
-	  
+	   for (Venue venue : ts.venues) {
+        for (Theater theater : venue.theaters) {
+          for (Show show : theater.shows) {
+               
+              System.out.println(show.name+"\n"); 
+          }
+        }
+	  }	  
 	}
 
 	/**
