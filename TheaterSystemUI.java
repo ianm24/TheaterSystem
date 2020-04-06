@@ -151,10 +151,8 @@ public class TheaterSystemUI {
 	}
 
 	private void displayUser() {
-	  System.out.println("Welcome to the Theater System, " + ts.currentAccount.firstName);
       while(quit == false) {
-        
-        System.out.println("Please select from the following options:\n1. Display the list of events"
+        System.out.println("Welcome, " + ts.currentAccount.firstName + "!\nPlease select from the following options:\n1. Display the list of events"
            + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating\n5. Display an event's information"
            + "\n6. Purchase ticket \n7. Get a refund \n8. Leave a review \n9.Quit");
         int response = key.nextInt();
@@ -204,11 +202,11 @@ public class TheaterSystemUI {
 	}
 
 	private void displayEmployee() {
-
+	  
 	}
 
 	private void displayAdmin() {
-
+	  
 	}
 
 	private void searchByName() {
@@ -228,7 +226,7 @@ public class TheaterSystemUI {
 	}
 
 	private void displayEventList() {
-
+	  
 	}
 
 	/**
