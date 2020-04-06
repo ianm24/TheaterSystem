@@ -27,7 +27,11 @@ public class User extends Account {
 	 * @return password
 	 */
 	public String getPassword() {
-		return password;
+		return this.password;
+	}
+	
+	public String getPhoneNumber() {
+		return this.phoneNumber;
 	}
 	
 }
