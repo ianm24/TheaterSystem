@@ -139,16 +139,12 @@ public class TheaterSystemUI {
           case 4:
             tsUI.searchByRating();
             break;
-            
+ 
           case 5:
-            tsUI.displayEventInfo();
-            break;
-            
-          case 6:
             tsUI.purchaseTicket();
             break;
             
-          case 7:
+          case 6:
             quit = true;
             break;
             
@@ -182,24 +178,20 @@ public class TheaterSystemUI {
           case 4:
             tsUI.searchByRating();
             break;
-            
-          case 5: 
-            tsUI.displayEventInfo();
-            break;
-            
-          case 6:
+
+          case 5:
             tsUI.purchaseTicket();
             break;
             
-          case 7:
+          case 6:
             tsUI.getRefund();
             break;
             
-          case 8:
+          case 7:
             tsUI.leaveReview();
             break;
             
-          case 9:
+          case 8:
             quit = true;
             break;
             
@@ -235,32 +227,28 @@ public class TheaterSystemUI {
           case 4:
             tsUI.searchByRating();
             break;
-            
+ 
           case 5:
-            tsUI.displayEventInfo();
-            break;
-            
-          case 6:
             tsUI.purchaseTicket();
             break;
             
-          case 7:
+          case 6:
             tsUI.getRefund();
             break;
             
-          case 8:
+          case 7:
            tsUI.leaveReview();
             break;
             
-          case 9:
+          case 8:
             tsUI.addEvent();
             break;
             
-          case 10:
+          case 9:
             tsUI.removeEvent();
             break;
             
-          case 11:
+          case 10:
             quit = true;
             break;
           default:
@@ -296,35 +284,31 @@ public class TheaterSystemUI {
             tsUI.searchByRating();
             break;
             
-          case 5: 
-            tsUI.displayEventInfo();
-            break;
-            
-          case 6:
+          case 5:
             tsUI.purchaseTicket();
             break;
             
-          case 7:
+          case 6:
             tsUI.getRefund();
             break;
             
-          case 8:
+          case 7:
             tsUI.leaveReview();
             break;
             
-          case 9:
+          case 8:
             tsUI.removeReview();
             break;
             
-          case 10:
+          case 9:
             tsUI.addEvent();
             break;
             
-          case 11:
+          case 10:
             tsUI.removeEvent();
             break;
             
-          case 12:
+          case 11:
             quit = true;
             break;
             
