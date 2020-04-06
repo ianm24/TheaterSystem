@@ -126,24 +126,31 @@ public class TheaterSystemUI {
           case 1:
             tsUI.displayEventList();
             break;
+            
           case 2:
             tsUI.searchByName();
             break;
+            
           case 3:
             tsUI.searchByGenre();
             break;
+            
           case 4:
             tsUI.searchByRating();
             break;
+            
           case 5:
             tsUI.displayEventInfo();
             break;
+            
           case 6:
             tsUI.purchaseTicket();
             break;
+            
           case 7:
             quit = true;
             break;
+            
           default:
             System.out.println("Invalid Selection");
             break;
@@ -245,9 +252,11 @@ public class TheaterSystemUI {
             break;
             
           case 9:
+            tsUI.addEvent();
             break;
             
           case 10:
+            tsUI.removeEvent();
             break;
             
           case 11:
@@ -311,7 +320,7 @@ public class TheaterSystemUI {
             break;
             
           case 11:
-            tsUI.removeReview();
+            tsUI.removeEvent();
             break;
             
           case 12:
@@ -341,6 +350,10 @@ public class TheaterSystemUI {
 
 	private void addEvent() {
 
+	}
+	
+	private void removeEvent() {
+	  
 	}
 
 	private void displayEventList() {
