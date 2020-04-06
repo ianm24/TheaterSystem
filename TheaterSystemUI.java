@@ -15,7 +15,7 @@ public class TheaterSystemUI {
         System.out.println("Welcome to the Theater System.");
         while(quit == false) {
 	      System.out.println("Please select from the following options:\n1. Login"
-	         + "\n2. Create an account\n3. Continue as Guest\n4. quit");
+	         + "\n2. Create an account\n3. Continue as Guest\n4. Quit");
           int response = key.nextInt();
           key.nextLine();
           switch (response) {
@@ -55,11 +55,7 @@ public class TheaterSystemUI {
           return;
       }
     }
-	
-	//private void displayMainMenu() {
-
-	//}
-
+    
 	private void login() {
 	  System.out.println("Enter your first name:");
 	  String firstName = key.next();
@@ -119,7 +115,39 @@ public class TheaterSystemUI {
 	}
 
 	private void displayGuest() {
-
+	  while(quit == false) {
+	    System.out.println("Welcome Guest, please select from the following options:\n1. Display the list of events"
+	      + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating"
+	      + "\n5. Display an event's info\n6. Purchase ticket\n7. Quit");
+	    int response = key.nextInt();
+        key.nextLine();
+        switch (response) {
+          case 1:
+            tsUI.displayEventList();
+            break;
+          case 2:
+            tsUI.searchByName();
+            break;
+          case 3:
+            tsUI.searchByGenre();
+            break;
+          case 4:
+            tsUI.searchByRating();
+            break;
+          case 5:
+            tsUI.displayEventInfo();
+            break;
+          case 6:
+            tsUI.purchaseTicket();
+            break;
+          case 7:
+            quit = true;
+            break;
+          default:
+            System.out.println("Invalid Selection");
+            break;
+        }
+	  }
 	}
 
 	private void displayUser() {
@@ -159,15 +187,15 @@ public class TheaterSystemUI {
 	 * 
 	 * @param event The event to display
 	 */
-	private void displayEventInfo(Event event) {
-		System.out.println(event.toString());
+	private void displayEventInfo() {
+		//System.out.println(event.toString());
 	}
 
 	private void displaySeats() {
 
 	}
 
-	private void getUserInput() {
+	private void purchaseTicket() {
 
 	}
 }
