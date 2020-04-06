@@ -120,7 +120,7 @@ public class TheaterSystemUI {
 	  while(quit == false) {
 	    System.out.println("Welcome Guest, please select from the following options:\n1. Display the list of events"
 	      + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating"
-	      + "\n5. Display an event's info\n6. Purchase ticket\n7. Quit");
+	      + "\n5. Purchase ticket\n6. Quit");
 	    int response = key.nextInt();
         key.nextLine();
         switch (response) {
@@ -139,16 +139,12 @@ public class TheaterSystemUI {
           case 4:
             tsUI.searchByRating();
             break;
-            
+ 
           case 5:
-            tsUI.displayEventInfo();
-            break;
-            
-          case 6:
             tsUI.purchaseTicket();
             break;
             
-          case 7:
+          case 6:
             quit = true;
             break;
             
@@ -162,8 +158,8 @@ public class TheaterSystemUI {
 	private void displayUser() {
       while(quit == false) {
         System.out.println("Welcome, " + ts.currentAccount.firstName + "!\nPlease select from the following options:\n1. Display the list of events"
-           + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating\n5. Display an event's information"
-           + "\n6. Purchase ticket \n7. Get a refund \n8. Leave a review \n9. Quit");
+           + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating"
+           + "\n5. Purchase ticket \n6. Get a refund \n7. Leave a review \n8. Quit");
         int response = key.nextInt();
         key.nextLine();
         switch (response) {
@@ -182,24 +178,20 @@ public class TheaterSystemUI {
           case 4:
             tsUI.searchByRating();
             break;
-            
-          case 5: 
-            tsUI.displayEventInfo();
-            break;
-            
-          case 6:
+
+          case 5:
             tsUI.purchaseTicket();
             break;
             
-          case 7:
+          case 6:
             tsUI.getRefund();
             break;
             
-          case 8:
+          case 7:
             tsUI.leaveReview();
             break;
             
-          case 9:
+          case 8:
             quit = true;
             break;
             
@@ -215,8 +207,64 @@ public class TheaterSystemUI {
 	  while(quit == false) {
         System.out.println("Welcome, "+ts.currentAccount.firstName+", please select from the following "
             + "options:\n1. Display the list of events\n2. Search for events by name\n3. Search for events"
-            + " by genre\n4. Search for events by rating\n5. Display an event's info\n6. Purchase ticket\n7. "
-            + "Get a refund\n8. Leave a review\n9. Add a show\n10. Remove a show\n11. Quit");
+            + " by genre\n4. Search for events by rating\n5. Purchase ticket\n6. "
+            + "Get a refund\n7. Leave a review\n8. Add a show\n9. Remove a show\n10. Quit");
+        int response = key.nextInt();
+        key.nextLine();
+        switch (response) {
+          case 1:
+            tsUI.displayEventList();
+            break;
+            
+          case 2:
+            tsUI.searchByName();
+            break;
+            
+          case 3:
+            tsUI.searchByGenre();
+            break;
+            
+          case 4:
+            tsUI.searchByRating();
+            break;
+ 
+          case 5:
+            tsUI.purchaseTicket();
+            break;
+            
+          case 6:
+            tsUI.getRefund();
+            break;
+            
+          case 7:
+           tsUI.leaveReview();
+            break;
+            
+          case 8:
+            tsUI.addEvent();
+            break;
+            
+          case 9:
+            tsUI.removeEvent();
+            break;
+            
+          case 10:
+            quit = true;
+            break;
+          default:
+            System.out.println("Invalid Selection");
+            break;
+        }
+      }
+	  
+	}
+
+	private void displayAdmin() {
+	  
+	  while(quit == false) {
+        System.out.println("Welcome, Admin: " + ts.currentAccount.firstName + "!\nPlease select from the following options:\n1. Display the list of events"
+           + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating"
+           + "\n5. Purchase ticket \n6. Get a refund \n7. Leave a review \n8. Remove a review \n9. Add show \n10. Remove show \n11. Quit");
         int response = key.nextInt();
         key.nextLine();
         switch (response) {
@@ -237,94 +285,30 @@ public class TheaterSystemUI {
             break;
             
           case 5:
-            tsUI.displayEventInfo();
-            break;
-            
-          case 6:
             tsUI.purchaseTicket();
             break;
             
-          case 7:
-            tsUI.getRefund();
-            break;
-            
-          case 8:
-           tsUI.leaveReview();
-            break;
-            
-          case 9:
-            tsUI.addEvent();
-            break;
-            
-          case 10:
-            tsUI.removeEvent();
-            break;
-            
-          case 11:
-            quit = true;
-            break;
-          default:
-            System.out.println("Invalid Selection");
-            break;
-        }
-      }
-	  
-	}
-
-	private void displayAdmin() {
-	  
-	  while(quit == false) {
-        System.out.println("Welcome, Admin: " + ts.currentAccount.firstName + "!\nPlease select from the following options:\n1. Display the list of events"
-           + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating\n5. Display an event's information"
-           + "\n6. Purchase ticket \n7. Get a refund \n8. Leave a review \n9. Remove a review \n10. Add show \n11. Remove show \n12. Quit");
-        int response = key.nextInt();
-        key.nextLine();
-        switch (response) {
-          case 1:
-            tsUI.displayEventList();
-            break;
-            
-          case 2:
-            tsUI.searchByName();
-            break;
-            
-          case 3:
-            tsUI.searchByGenre();
-            break;
-            
-          case 4:
-            tsUI.searchByRating();
-            break;
-            
-          case 5: 
-            tsUI.displayEventInfo();
-            break;
-            
           case 6:
-            tsUI.purchaseTicket();
-            break;
-            
-          case 7:
             tsUI.getRefund();
             break;
             
-          case 8:
+          case 7:
             tsUI.leaveReview();
             break;
             
-          case 9:
+          case 8:
             tsUI.removeReview();
             break;
             
-          case 10:
+          case 9:
             tsUI.addEvent();
             break;
             
-          case 11:
+          case 10:
             tsUI.removeEvent();
             break;
             
-          case 12:
+          case 11:
             quit = true;
             break;
             
@@ -343,15 +327,24 @@ public class TheaterSystemUI {
 		for(Show show : results) {
 			System.out.println(show.toString());
 		}
-	   
 	}
 
 	private void searchByGenre() {
-	  
+	     System.out.println("What is the genre of the show you would like to search for?");
+	        String genre = key.nextLine();
+	        ArrayList<Show> results = ts.searchGenre(genre);
+	        for(Show show : results) {
+	            System.out.println(show.toString());
+	        }
 	}
 
 	private void searchByRating() {
-
+      System.out.println("What is the rating of the show you would like to search for?");
+      String rating = key.nextLine();
+      ArrayList<Show> results = ts.searchGenre(rating);
+      for(Show show : results) {
+          System.out.println(show.toString());
+      }
 	}
 
 	private void addEvent() {
@@ -498,16 +491,14 @@ public class TheaterSystemUI {
 	}
 
 	private void displayEventList() {
-	  
-	}
-
-	/**
-	 * Displays and event's information
-	 * 
-	 * @param event The event to display
-	 */
-	private void displayEventInfo() {
-		//System.out.println(event.toString());
+	   for (Venue venue : ts.venues) {
+        for (Theater theater : venue.theaters) {
+          for (Show show : theater.shows) {
+               
+              System.out.println(show.name+"\n"); 
+          }
+        }
+	  }	  
 	}
 
 	private void displaySeats(Theater theater) {
