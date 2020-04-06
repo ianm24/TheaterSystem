@@ -323,6 +323,7 @@ public class TheaterSystem {
 
 	public void saveToJSON() {
 		JSONHandler.saveAccounts(this.accounts);
+		JSONHandler.saveVenues(this.venues);
 	}
 
 	public void loadFromJSON() {
