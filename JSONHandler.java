@@ -2,6 +2,9 @@ package TheaterSystem;
 
 import java.util.ArrayList;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,7 +20,7 @@ public class JSONHandler extends JSONConstants{
 	 * Loads the system's Venues from the JSON file
 	 * @return Returns an ArrayList of Venues stored in the JSON file
 	 */
-	public ArrayList<Venue> loadVenues() {
+	public static ArrayList<Venue> loadVenues() {
 		ArrayList<Venue> venues = new ArrayList<Venue>();
 		try {
 			FileReader reader = new FileReader(VENUES_FILENAME);
@@ -122,7 +125,7 @@ public class JSONHandler extends JSONConstants{
 	 * Loads the system's Users from the JSON file
 	 * @return Returns and ArrayList of Users stored in the JSON file
 	 */
-	public ArrayList<User> loadAccounts() {
+	public static ArrayList<User> loadAccounts() {
 		ArrayList<User> users = new ArrayList<User>();
 		try {
 			FileReader reader = new FileReader(ACCOUNTS_FILENAME);
@@ -153,5 +156,39 @@ public class JSONHandler extends JSONConstants{
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public static void saveAccounts(ArrayList<User> users) {
+		JSONArray jsonUsers = new JSONArray();
+		
+		for(int i = 0; i < users.size(); i++ ) {
+			jsonUsers.add(getAccountJSON(users.get(i)));
+		}
+		
+		try(FileWriter file = new FileWriter(ACCOUNTS_FILENAME)) {
+			file.write(jsonUsers.toJSONString());
+			file.flush();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static JSONObject getAccountJSON(User user) {
+		JSONObject accountDetails = new JSONObject();
+		accountDetails.put(USER_FIRST_NAME, user.firstName);
+		accountDetails.put(USER_LAST_NAME, user.getLastName());
+		accountDetails.put(USER_PASSWORD, user.getPassword());
+		accountDetails.put(USER_PHONE_NUMBER, user.getPhoneNumber());
+		if (user.getClass().getName().contains("User")) {
+			accountDetails.put(USER_IS_EMPLOYEE, false);
+			accountDetails.put(USER_IS_ADMIN, false);
+		} else if (user.getClass().getName().contains("Employee")) {
+			accountDetails.put(USER_IS_EMPLOYEE, true);
+			accountDetails.put(USER_IS_ADMIN, false);
+		} else if (user.getClass().getName().contains("Admin")) {
+			accountDetails.put(USER_IS_EMPLOYEE, false);
+			accountDetails.put(USER_IS_ADMIN, true);
+		}
+		return accountDetails;
 	}
 }

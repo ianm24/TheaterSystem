@@ -85,7 +85,7 @@ public class TheaterSystem {
 			this.accounts.add(newAcc);
 			this.currentAccount = newAcc;
 		} else if(isAdmin) {
-			Admin newAcc = new Admin(firstName, lastName, password, phoneNumber, isEmployee);
+			Admin newAcc = new Admin(firstName, lastName, password, phoneNumber, isAdmin);
 			this.accounts.add(newAcc);
 			this.currentAccount = newAcc;
 		} else {
@@ -267,11 +267,12 @@ public class TheaterSystem {
 	}
 
 	public void saveToJSON() {
-
+		JSONHandler.saveAccounts(this.accounts);
 	}
 
 	public void loadFromJSON() {
-
+		this.accounts = JSONHandler.loadAccounts();
+		this.venues = JSONHandler.loadVenues();
 	}
 
 }
