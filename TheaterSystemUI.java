@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * This is the class that displays the system to the user
  * 
- * @author Rebekah Soard, Ian McDowell
+ * @author Rebekah Soard, Ian McDowell, Miles Littlejohn
  *
  */
 public class TheaterSystemUI {
@@ -270,7 +270,8 @@ public class TheaterSystemUI {
 	}
 
 	private void searchByName() {
-
+	  System.out.println("Please enter the name of the show you want to find:");
+	  ts.searchShowName(key.nextLine());
 	}
 
 	private void searchByGenre() {
