@@ -151,7 +151,6 @@ public class TheaterSystemUI {
 	}
 
 	private void displayUser() {
-	  System.out.println("Welcome to the Theater System, " + ts.currentAccount.firstName);
       while(quit == false) {
         
         System.out.println("Please select from the following options:\n1. Display the list of events"
@@ -180,7 +179,6 @@ public class TheaterSystemUI {
             break;
         }
       } 
-      System.out.print("Thank you for using the Theater System.");
 	}
 
 	private void displayEmployee() {
