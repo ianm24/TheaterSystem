@@ -330,11 +330,21 @@ public class TheaterSystemUI {
 	}
 
 	private void searchByGenre() {
-	  
+	     System.out.println("What is the genre of the show you would like to search for?");
+	        String genre = key.nextLine();
+	        ArrayList<Show> results = ts.searchGenre(genre);
+	        for(Show show : results) {
+	            System.out.println(show.toString());
+	        }
 	}
 
 	private void searchByRating() {
-
+      System.out.println("What is the rating of the show you would like to search for?");
+      String rating = key.nextLine();
+      ArrayList<Show> results = ts.searchGenre(rating);
+      for(Show show : results) {
+          System.out.println(show.toString());
+      }
 	}
 
 	private void addEvent() {
