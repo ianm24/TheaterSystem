@@ -163,24 +163,44 @@ public class TheaterSystemUI {
           case 1:
             tsUI.displayEventList();
             break;
+            
           case 2:
-            System.out.println("Please enter the name of the event");
             tsUI.searchByName();
             break;
+            
           case 3:
-            System.out.println("Please enter a genre");
             tsUI.searchByGenre();
             break;
+            
           case 4:
-            System.out.println("Please enter the rating out of 5 stars");
             tsUI.searchByRating();
             break;
+            
+          case 5: 
+            tsUI.displayEventInfo();
+            break;
+            
+          case 6:
+            tsUI.purchaseTicket();
+            break;
+            
+          case 7:
+            tsUI.getRefund();
+            break;
+            
+          case 8:
+            tsUI.leaveReview();
+            break;
+            
+          case 9:
+            quit = true;
+            break;
+            
           default:
             System.out.println("Invalid Selection");
             break;
         }
       } 
-      System.out.print("Thank you for using the Theater System.");
 	}
 
 	private void displayEmployee() {
@@ -226,6 +246,14 @@ public class TheaterSystemUI {
 
 	private void purchaseTicket() {
 
+	}
+	
+	private void getRefund() {
+	  
+	}
+	
+	private void leaveReview() {
+	  
 	}
 }
 
