@@ -203,7 +203,53 @@ public class TheaterSystemUI {
 	}
 
 	private void displayEmployee() {
+<<<<<<< HEAD
+	  while(quit == false) {
+        System.out.println("Welcome, "+ts.currentAccount.firstName+", please select from the following "
+            + "options:\n1. Display the list of events\n2. Search for events by name\n3. Search for events"
+            + " by genre\n4. Search for events by rating\n5. Display an event's info\n6. Purchase ticket\n7. "
+            + "Get a refund\n8. Leave a review\n9. Add a show\n10. Remove a show\n11. Quit");
+        int response = key.nextInt();
+        key.nextLine();
+        switch (response) {
+          case 1:
+            tsUI.displayEventList();
+            break;
+          case 2:
+            tsUI.searchByName();
+            break;
+          case 3:
+            tsUI.searchByGenre();
+            break;
+          case 4:
+            tsUI.searchByRating();
+            break;
+          case 5:
+            tsUI.displayEventInfo();
+            break;
+          case 6:
+            tsUI.purchaseTicket();
+            break;
+          case 7:
+            
+            break;
+          case 8:
+            break;
+          case 9:
+            break;
+          case 10:
+            break;
+          case 11:
+            quit = true;
+            break;
+          default:
+            System.out.println("Invalid Selection");
+            break;
+        }
+      }
+=======
 	  
+>>>>>>> 2cc4787bd2fe56990848fb63c42f57cbe43fd273
 	}
 
 	private void displayAdmin() {
