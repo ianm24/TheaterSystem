@@ -28,4 +28,8 @@ public class Venue {
 		Theater theater = new Theater(seats, this);
 		this.theaters.add(theater);
 	}
+	
+	public String getName() {
+		return this.name;
+	}
 }
