@@ -343,7 +343,6 @@ public class TheaterSystemUI {
 		for(Show show : results) {
 			System.out.println(show.toString());
 		}
-	   
 	}
 
 	private void searchByGenre() {
