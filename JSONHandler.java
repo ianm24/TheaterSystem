@@ -1,6 +1,7 @@
 package TheaterSystem;
 
 import java.util.ArrayList;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,6 +25,9 @@ public class JSONHandler extends JSONConstants{
 		ArrayList<Venue> venues = new ArrayList<Venue>();
 		try {
 			FileReader reader = new FileReader(VENUES_FILENAME);
+			if(!new File(VENUES_FILENAME).exists()) {
+				new FileWriter(VENUES_FILENAME).flush();
+			}
 			JSONArray JSONVenues = (JSONArray)new JSONParser().parse(reader);
 			for(int i = 0; i < JSONVenues.size(); i++) {
 				JSONObject JSONVenue = (JSONObject)JSONVenues.get(i);
@@ -137,6 +141,9 @@ public class JSONHandler extends JSONConstants{
 		ArrayList<User> users = new ArrayList<User>();
 		try {
 			FileReader reader = new FileReader(ACCOUNTS_FILENAME);
+			if(!new File(ACCOUNTS_FILENAME).exists()) {
+				new FileWriter(ACCOUNTS_FILENAME).flush();
+			}
 			JSONArray JSONUsers = (JSONArray)new JSONParser().parse(reader);
 			for(int i = 0; i < JSONUsers.size(); i++) {
 				JSONObject JSONUser = (JSONObject)JSONUsers.get(i);

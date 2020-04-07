@@ -514,7 +514,25 @@ public class TheaterSystemUI {
 	}
 	
 	private void leaveReview() {
-	  
+		System.out.println("What is the name of the event would you like to leave a review for?");
+		boolean quit = false;
+		while (!quit) {
+			String showName = key.nextLine();
+			ArrayList<Show> results = ts.searchShowName(showName);
+			for(Show show : results) {
+				if(show.name.equalsIgnoreCase(showName)) {
+					Show currShow = show;
+					quit = true;
+				} else {
+					System.out.println("That is not the name of an even stored in the system, please enter a valid event name.");
+				}
+			}
+		}
+		quit = false;
+		System.out.println("Please enter a rating out of 10:");
+		while(!quit) {
+//			if()
+		}
 	}
 	
 	private void removeReview() {
