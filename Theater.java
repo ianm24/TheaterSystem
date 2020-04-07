@@ -13,7 +13,7 @@ public class Theater {
 	public ArrayList<Seat> seats;
 	public ArrayList<Show> shows;
 	public Venue venueContaining;
-
+	
 	public Theater(ArrayList<Seat> seats, Venue venueContaining) {
 		this.seats = seats;
 		this.venueContaining = venueContaining;
