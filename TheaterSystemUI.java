@@ -549,7 +549,9 @@ public class TheaterSystemUI {
 	  results.get(deleteNum-1).theater.shows.remove(results.get(deleteNum-1));
 	  System.out.println("Show deleted");
 	}
-
+/**
+ * This method displays the list of all the events
+ */
 	private void displayEventList() {
 	   for (Venue venue : ts.venues) {
         for (Theater theater : venue.theaters) {
@@ -560,7 +562,10 @@ public class TheaterSystemUI {
         }
 	  }	  
 	}
-
+  /**
+   * This method takes in a theater and calls the displaySeats method in the TheaterSystem class
+   * @param theater
+   */
 	private void displaySeats(Theater theater) {
 		ts.displaySeats(theater);
 	}
