@@ -41,7 +41,7 @@ public class TheaterSystemUI {
         System.out.print("Thank you for using the Theater System.");
     }
     
-    private void checkAccountType(String account) {
+f    private void checkAccountType(String account) {
       switch(account) {
         case "User":
           tsUI.displayUser();
@@ -372,9 +372,9 @@ public class TheaterSystemUI {
 	          
 	          if (ageRating.equals("G") || ageRating.equals("PG") || ageRating.equals("PG-13") || ageRating.equals("R")) {
 	            ageLoop = false;
+	          } else {
+	            System.out.println("Please enter a valid response: G, PG, PG-13, R");
 	          }
-	          
-	          System.out.println("Please enter a valid response: G, PG, PG-13, R");
 	        }
 	        
 	        System.out.println("Please enter the price for the tickets:");
@@ -474,16 +474,40 @@ public class TheaterSystemUI {
             }
             
             System.out.println("Enter the venue that the movie is going to be shown at:");
-            String venueName = key.nextLine();
-            Venue findVenue = new Venue(venueName);
+            boolean venLoop = true;
+            Venue returnVenue = new Venue("");
             
-            for (Venue findVenue : ts.venues) {
-              if (findVenue.getName() =)
+            while (venLoop != false) {
+             String venueName = key.nextLine();
+             
+             for (int i = 0; i < ts.venues.size(); i++) {
+               if (ts.venues.get(i).getName().equalsIgnoreCase(venueName)) {
+                 returnVenue = ts.venues.get(i);
+                 venLoop = false;
+               } else {
+                 System.out.println("That venue does not exist, please enter another venue name");
+               }
+             }
+           }
+            
+            System.out.println("Enter the number of the theater that the movie is going to be shown at:");
+            boolean theaLoop = true;
+            int theaterNum = 0;
+            while(theaLoop != false) {
+              theaterNum = key.nextInt();
+              if (returnVenue.theaters.get(theaterNum -1) == null) {
+              System.out.println("Sorry that theater does not exist, please enter a valid theater.");
+            } else {
+              theaLoop = true;
             }
-	    }
+           }
+            
+          Movie returnMovie = new Movie (returnVenue, returnVenue.theaters.get(theaterNum-1), startTime, endTime, 
+                name, description, ageRating, price, genre, actors, producers, directors);
+            ts.addEvent(returnVenue.theaters.get(theaterNum-1), returnMovie);
+            break;
 	  }
-	  
-	  ts.addEvent(theater, show);
+	 } 
 	}
 	
 	private void removeEvent() {
