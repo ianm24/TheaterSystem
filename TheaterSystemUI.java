@@ -69,8 +69,6 @@ public class TheaterSystemUI {
 	} 
 
 	private void createAccount() {
-	  //String firstName, String lastName, String phoneNumber, String password,
-	  //boolean isEmployee,boolean isAdmin
 	  boolean employeeLoop = true;
 	  boolean adminLoop = true;
 	  boolean isEmployee = false, isAdmin = false;
@@ -506,11 +504,39 @@ public class TheaterSystemUI {
 	}
 
 	private void purchaseTicket() {
-
+	  System.out.println("What is the name of the show you would like to purchase a ticket for?");
+      String showName = key.nextLine();
+      ArrayList<Show> results = ts.searchShowName(showName);
+      Show show;
+      for(Show s : results) {
+        show = s;
+        System.out.println("Would you like to purchase a specific seat? Enter yes or no:");
+        String response = key.nextLine();
+        if (response.equalsIgnoreCase("yes")) {
+          System.out.println("Enter the letter of the seat you would like:");
+          char row = key.nextLine().charAt(0);
+          System.out.println("Enter the number of the column of the seat you would like:");
+          int col = key.nextInt();
+          ts.purchaseTicket(show, row, col);
+        }
+        else if (response.equalsIgnoreCase("no")) {
+          ts.purchaseTicket(show);
+        }
+        else {
+          System.out.println("Incorrect input, ticket purchasing cancelled.");
+        }
+      }
 	}
 	
 	private void getRefund() {
-	  
+	  System.out.println("What is the name of the show you would like to purchase a ticket for?");
+      String showName = key.nextLine();
+      ArrayList<Show> results = ts.searchShowName(showName);
+      Show show;
+      for(Show s : results) {
+        show = s;
+        System.out.println(ts.refundTicket(show));
+      }
 	}
 	
 	private void leaveReview() {
