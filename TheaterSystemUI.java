@@ -352,6 +352,9 @@ public class TheaterSystemUI {
 		}
 	}
 
+	/**
+	 * Searches for a show by it's genre type
+	 */
 	private void searchByGenre() {
 	     System.out.println("What is the genre of the show you would like to search for?");
 	        String genre = key.nextLine();
@@ -361,6 +364,9 @@ public class TheaterSystemUI {
 	        }
 	}
 
+	/**
+	 * Searches for a show by it's rating
+	 */
 	private void searchByRating() {
       System.out.println("What is the rating of the show you would like to search for?");
       String rating = key.nextLine();
@@ -369,6 +375,10 @@ public class TheaterSystemUI {
           System.out.println(show.toString());
       }
 	}
+	
+	/**
+	 * Adds a show to the theater system
+	 */
 	  private void addEvent() {
 	      System.out.println("What type of event would you like to add? \n1. Movie \n2. Play \n3. Concert");
 	      boolean quit = false;
@@ -535,7 +545,9 @@ public class TheaterSystemUI {
 	     } 
 	    }
 	 
-	
+	/**
+	 * Removes a show from the theater system
+	 */
 	private void removeEvent() {
 	  System.out.println("Please enter the name of the event you would like to remove");
 	  String input = key.nextLine();
