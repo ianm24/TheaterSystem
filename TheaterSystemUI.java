@@ -505,14 +505,10 @@ public class TheaterSystemUI {
 	                  int hour = Integer.parseInt(startTime.substring(0,1));
 	                  int minute = Integer.parseInt(startTime.substring(3,4));
 	                  String am_PM = startTime.substring(6,7);
-	                  if (hour > 13 || hour < 0) {
-	                    System.out.println("Hour invalid, please enter valid time.");
-	                  } else if (minute >= 60 || minute < 0) {
-	                    System.out.println("Minute invalid, please enter valid time.");
-	                  } else if(!am_PM.equalsIgnoreCase("AM") || !am_PM.equalsIgnoreCase("PM")) {
-	                    System.out.println("Please enter AM or PM one space after the time");
-	                  }   
-	                  startLoop = false;
+	                  if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equals("AM") || am_PM.equals("PM"))) {
+                        startLoop = false;
+                      } 
+                      System.out.println("INVALID FORMAT");  
 	              }
 	            }
 	            
@@ -527,14 +523,10 @@ public class TheaterSystemUI {
 	                  int hour = Integer.parseInt(endTime.substring(0,1));
 	                  int minute = Integer.parseInt(endTime.substring(3,4));
 	                  String am_PM = endTime.substring(6,7);
-	                  if (hour > 13 || hour < 0) {
-	                    System.out.println("Hour invalid, please enter valid time.");
-	                  } else if (minute >= 60 || minute < 0) {
-	                    System.out.println("Minute invalid, please enter valid time.");
-	                  } else if(!am_PM.equalsIgnoreCase("AM") || !am_PM.equalsIgnoreCase("PM")) {
-	                    System.out.println("Please enter AM or PM one space after the time.");
-	                  }   
-	                  endLoop = false;
+	                  if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equals("AM") || am_PM.equals("PM"))) {
+	                    endLoop = false;
+	                  } 
+	                  System.out.println("INVALID FORMAT");
 	              }            
 	          }
 	            
