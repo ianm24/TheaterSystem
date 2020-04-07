@@ -227,8 +227,8 @@ public class TheaterSystemUI {
 	  while(quit == false) {
         System.out.println("Please select from the following "
             + "options:\n1. Display the list of events\n2. Search for events by name\n3. Search for events"
-            + " by genre\n4. Search for events by rating\n5. Purchase ticket\n6. "
-            + "Get a refund\n7. Leave a review\n8. Add a show\n9. Remove a show\n10. Quit");
+            + " by genre\n4. Search for events by user rating\n5. Search for events by age rating\n6. Purchase ticket\n7. "
+            + "Get a refund\n8. Leave a review\n9. Add a show\n10. Remove a show\n11. Quit");
         int response = key.nextInt();
         key.nextLine();
         switch (response) {
@@ -245,30 +245,33 @@ public class TheaterSystemUI {
             break;
             
           case 4:
-            tsUI.searchByRating();
+            tsUI.searchByUserRating();
             break;
- 
+            
           case 5:
+            tsUI.searchByAgeRating();
+ 
+          case 6:
             tsUI.purchaseTicket();
             break;
             
-          case 6:
+          case 7:
             tsUI.getRefund();
             break;
             
-          case 7:
+          case 8:
            tsUI.leaveReview();
             break;
             
-          case 8:
+          case 9:
             tsUI.addEvent();
             break;
             
-          case 9:
+          case 10:
             tsUI.removeEvent();
             break;
             
-          case 10:
+          case 11:
             quit = true;
             break;
           default:
@@ -286,8 +289,9 @@ public class TheaterSystemUI {
 	  System.out.println("Welcome, Admin: " + ts.currentAccount.firstName +".");
 	  while(quit == false) {
         System.out.println("Please select from the following options:\n1. Display the list of events"
-           + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating"
-           + "\n5. Purchase ticket \n6. Get a refund \n7. Leave a review \n8. Remove a review \n9. Add show \n10. Remove show \n11. Quit");
+           + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by user rating"
+           + "\n5. Search for events by age rating\n6. Purchase ticket \n7. Get a refund \n8. Leave a review "
+           + "\n9. Remove a review \n10. Add show \n11. Remove show \n12. Quit");
         int response = key.nextInt();
         key.nextLine();
         switch (response) {
@@ -304,34 +308,37 @@ public class TheaterSystemUI {
             break;
             
           case 4:
-            tsUI.searchByRating();
+            tsUI.searchByUserRating();
             break;
             
           case 5:
+            tsUI.searchByAgeRating();
+            
+          case 6:
             tsUI.purchaseTicket();
             break;
             
-          case 6:
+          case 7:
             tsUI.getRefund();
             break;
             
-          case 7:
+          case 8:
             tsUI.leaveReview();
             break;
             
-          case 8:
+          case 9:
             tsUI.removeReview();
             break;
             
-          case 9:
+          case 10:
             tsUI.addEvent();
             break;
             
-          case 10:
+          case 11:
             tsUI.removeEvent();
             break;
             
-          case 11:
+          case 12:
             quit = true;
             break;
             
