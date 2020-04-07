@@ -132,8 +132,8 @@ public class TheaterSystemUI {
 	  System.out.println("Welcome, Guest.");
 	  while(quit == false) {
 	    System.out.println("Please select from the following options:\n1. Display the list of events"
-	      + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating"
-	      + "\n5. Purchase ticket\n6. Quit");
+	      + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by user rating"
+	      + "\n5. Search for events by age rating \n6. Purchase ticket\n7. Quit");
 	    int response = key.nextInt();
         key.nextLine();
         switch (response) {
@@ -150,14 +150,18 @@ public class TheaterSystemUI {
             break;
             
           case 4:
-            tsUI.searchByRating();
+            tsUI.searchByUserRating();
+            break;
+            
+          case 5:
+            tsUI.searchByAgeRating();
             break;
  
-          case 5:
+          case 6:
             tsUI.purchaseTicket();
             break;
             
-          case 6:
+          case 7:
             quit = true;
             break;
             
@@ -175,8 +179,8 @@ public class TheaterSystemUI {
 	  System.out.println("Welcome, " + ts.currentAccount.firstName +".");
       while(quit == false) {
         System.out.println("Please select from the following options:\n1. Display the list of events"
-           + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating"
-           + "\n5. Purchase ticket \n6. Get a refund \n7. Leave a review \n8. Quit");
+           + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by user rating"
+           + "\n5. Search for events by age rating \n6. Purchase ticket \n7. Get a refund \n8. Leave a review \n9. Quit");
         int response = key.nextInt();
         key.nextLine();
         switch (response) {
@@ -193,22 +197,26 @@ public class TheaterSystemUI {
             break;
             
           case 4:
-            tsUI.searchByRating();
+            tsUI.searchByAgeRating();;
+            break;
+            
+          case 5:
+            tsUI.searchByUserRating();;
             break;
 
-          case 5:
+          case 6:
             tsUI.purchaseTicket();
             break;
             
-          case 6:
+          case 7:
             tsUI.getRefund();
             break;
             
-          case 7:
+          case 8:
             tsUI.leaveReview();
             break;
             
-          case 8:
+          case 9:
             quit = true;
             break;
             
