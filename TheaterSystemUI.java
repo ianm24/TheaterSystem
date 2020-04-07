@@ -560,16 +560,19 @@ public class TheaterSystemUI {
 	            int theaterNum = 0;
 	            while(theaLoop != false) {
 	              theaterNum = key.nextInt();
+	              System.out.println(theaterNum);
 	              if (returnVenue.theaters.get(theaterNum -1) == null) {
 	              System.out.println("Sorry that theater does not exist, please enter a valid theater.");
 	            } else {
-	              theaLoop = true;
+	              theaLoop = false;
 	            }
 	           }
 	            
 	          Movie returnMovie = new Movie (returnVenue, returnVenue.theaters.get(theaterNum-1), startTime, endTime, 
 	                name, description, ageRating, price, genre, actors, producers, directors);
 	            ts.addEvent(returnVenue.theaters.get(theaterNum-1), returnMovie);
+	            System.out.println("Successfully Added Event!");
+	            quit = true;
 	            break;
 	      }
 	     } 
