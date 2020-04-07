@@ -42,6 +42,10 @@ public class TheaterSystemUI {
         System.out.print("Thank you for using the Theater System.");
     }
     
+    /**
+     * Checks what account is currently logged in
+     * @param account - The account being checked for admin, employee, user, or guest
+     */
     private void checkAccountType(String account) {
       switch(account) {
         case "User":
@@ -59,6 +63,9 @@ public class TheaterSystemUI {
       }
     }
     
+    /**
+     * Logs the user into the movie system
+     */
 	private void login() {
 	  System.out.println("Enter your first name:");
 	  String firstName = key.next();
@@ -69,6 +76,9 @@ public class TheaterSystemUI {
 	  tsUI.checkAccountType(ts.login(firstName, lastName, password));
 	} 
 
+	/**
+	 * Creates one of three different accounts: User, Admin, Employee
+	 */
 	private void createAccount() {
 	  boolean employeeLoop = true;
 	  boolean adminLoop = true;
@@ -115,6 +125,9 @@ public class TheaterSystemUI {
       tsUI.checkAccountType(ts.login(firstName, lastName, password));
 	}
 
+	/**
+	 * Displays the user-interface for guests
+	 */
 	private void displayGuest() {
 	  System.out.println("Welcome, Guest.");
 	  while(quit == false) {
@@ -155,6 +168,9 @@ public class TheaterSystemUI {
 	  }
 	}
 
+	/**
+	 * Displays the user-interface for users
+	 */
 	private void displayUser() {
 	  System.out.println("Welcome, " + ts.currentAccount.firstName +".");
       while(quit == false) {
@@ -203,6 +219,9 @@ public class TheaterSystemUI {
       } 
 	}
 
+	/**
+	 * Displays the user-interface for employees
+	 */
 	private void displayEmployee() {
 	  System.out.println("Welcome, " + ts.currentAccount.firstName +".");
 	  while(quit == false) {
@@ -260,6 +279,9 @@ public class TheaterSystemUI {
 	  
 	}
 
+	/**
+	 * Displays the user-interface for admin
+	 */
 	private void displayAdmin() {
 	  System.out.println("Welcome, Admin: " + ts.currentAccount.firstName +".");
 	  while(quit == false) {
