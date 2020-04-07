@@ -539,7 +539,10 @@ public class TheaterSystemUI {
 	private void displaySeats(Theater theater) {
 		ts.displaySeats(theater);
 	}
-
+	/**
+	 * This method takes in user input and allows the user to purchase a ticket for a specific seat or any untaken seat,
+	 * calling the purchaseTicket method in the TheaterSystem class
+	 */
 	private void purchaseTicket() {
 	  System.out.println("What is the name of the show you would like to purchase a ticket for?");
       String showName = key.nextLine();
@@ -564,9 +567,11 @@ public class TheaterSystemUI {
         }
       }
 	}
-	
+	/**
+	 * This method allows the user to get a ticket refunded for a specific show
+	 */
 	private void getRefund() {
-	  System.out.println("What is the name of the show you would like to purchase a ticket for?");
+	  System.out.println("What is the name of the show you would like to refund a ticket for?");
       String showName = key.nextLine();
       ArrayList<Show> results = ts.searchShowName(showName);
       Show show;
@@ -613,7 +618,9 @@ public class TheaterSystemUI {
 		currShow.addRating(rating, review);
 		System.out.println("Rating has been added! Thanks for your feedback!");
 	}
-	
+	/**
+	 * This method takes in user input to remove a review, calling on the deleteReview method in the TheaterSystem class
+	 */
 	private void removeReview() {
 	  System.out.println("What is the name of the event would you like to remove the review of?");
       boolean quit = false;
