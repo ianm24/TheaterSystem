@@ -50,9 +50,9 @@ public class JSONHandler extends JSONConstants{
 						boolean isReserved = (boolean)JSONSeat.get(SEATS_RESERVED);
 						String row = (String)JSONSeat.get(SEATS_ROW);
 						char rowChar = (char)row.charAt(0);
-						String col = (String)JSONSeat.get(SEATS_COL);
-						int intCol = Integer.parseInt(col);
-						Seat seat = new Seat(isHandicapable,rowChar,intCol);
+						long col = (long)JSONSeat.get(SEATS_COL);
+						int colInt = Math.toIntExact(col);
+						Seat seat = new Seat(isHandicapable,rowChar,colInt);
 						seat.setReserved(isReserved);
 						seats.add(seat);
 					}
@@ -60,22 +60,41 @@ public class JSONHandler extends JSONConstants{
 					JSONArray JSONShows = (JSONArray)JSONTheater.get(SHOWS);
 					ArrayList<Show> shows = new ArrayList<Show>();
 					
-					JSONObject JSONShowsObj = (JSONObject)JSONShows.get(0);
-					JSONArray JSONMovies = (JSONArray)JSONShowsObj.get(MOVIES);
+					JSONArray JSONMovies = (JSONArray)JSONShows.get(MOVIES);
 					for(int k = 0; k < JSONMovies.size(); k++) {
 						JSONObject JSONMovie = (JSONObject)JSONMovies.get(k);
 						String startTime = (String)JSONMovie.get(EVENT_START_TIME);
 						String endTime = (String)JSONMovie.get(EVENT_END_TIME);
 						String name = (String)JSONMovie.get(EVENT_NAME);
 						String description = (String)JSONMovie.get(EVENT_DESCRIPTION);
-						String ageRating = (String)JSONMovie.get(EVENT_START_TIME);
-						double[] userRating = (double[])JSONMovie.get(EVENT_USER_RATING);
+						String ageRating = (String)JSONMovie.get(EVENT_AGE_RATING);
+						JSONArray userRatingJSON = (JSONArray)JSONMovie.get(EVENT_USER_RATING);
+						double[] userRating = new double[userRatingJSON.size()];
+						for(int m = 0; m < userRatingJSON.size(); m++) {
+							userRating[m] = (double)userRatingJSON.get(m);
+						}
 						double price = (double)JSONMovie.get(EVENT_PRICE);
 						String genre = (String)JSONMovie.get(EVENT_GENRE);
-						String[] reviews = (String[])JSONMovie.get(EVENT_REVIEWS);
-						String[] actors = (String[])JSONMovie.get(EVENT_ACTORS);
-						String[] producers = (String[])JSONMovie.get(EVENT_PRODUCERS);
-						String[] directors = (String[])JSONMovie.get(MOVIE_DIRECTORS);
+						JSONArray reviewsJSON = (JSONArray)JSONMovie.get(EVENT_REVIEWS);
+						String[] reviews = new String[reviewsJSON.size()];
+						for(int m = 0; m < reviewsJSON.size(); m++) {
+							reviews[m] = (String)reviewsJSON.get(m);
+						}
+						JSONArray actorsJSON = (JSONArray)JSONMovie.get(EVENT_ACTORS);
+						String[] actors = new String[actorsJSON.size()];
+						for(int m = 0; m < actorsJSON.size(); m++) {
+							actors[m] = (String)actorsJSON.get(m);
+						}
+						JSONArray producersJSON = (JSONArray)JSONMovie.get(EVENT_PRODUCERS);
+						String[] producers = new String[producersJSON.size()];
+						for(int m = 0; m < producersJSON.size(); m++) {
+							producers[m] = (String)producersJSON.get(m);
+						}
+						JSONArray directorsJSON = (JSONArray)JSONMovie.get(MOVIE_DIRECTORS);
+						String[] directors = new String[directorsJSON.size()];
+						for(int m = 0; m < directorsJSON.size(); m++) {
+							directors[m] = (String)directorsJSON.get(m);
+						}
 						Movie movie = new Movie(venue,venue.theaters.get(j),startTime,
 								endTime,name,description,ageRating,price,genre,actors,producers,directors);
 						for(int rev = 0; rev < reviews.length; rev++) {
@@ -83,21 +102,41 @@ public class JSONHandler extends JSONConstants{
 						}
 						shows.add(movie);
 					}
-					JSONArray JSONPlays = (JSONArray)JSONShowsObj.get(PLAYS);
+					JSONArray JSONPlays = (JSONArray)JSONShows.get(PLAYS);
 					for(int k = 0; k < JSONPlays.size(); k++) {
 						JSONObject JSONPlay = (JSONObject)JSONPlays.get(k);
 						String startTime = (String)JSONPlay.get(EVENT_START_TIME);
 						String endTime = (String)JSONPlay.get(EVENT_END_TIME);
 						String name = (String)JSONPlay.get(EVENT_NAME);
 						String description = (String)JSONPlay.get(EVENT_DESCRIPTION);
-						String ageRating = (String)JSONPlay.get(EVENT_START_TIME);
-						double[] userRating = (double[])JSONPlay.get(EVENT_USER_RATING);
+						String ageRating = (String)JSONPlay.get(EVENT_AGE_RATING);
+						JSONArray userRatingJSON = (JSONArray)JSONPlay.get(EVENT_USER_RATING);
+						double[] userRating = new double[userRatingJSON.size()];
+						for(int m = 0; m < userRatingJSON.size(); m++) {
+							userRating[m] = (double)userRatingJSON.get(m);
+						}
 						double price = (double)JSONPlay.get(EVENT_PRICE);
 						String genre = (String)JSONPlay.get(EVENT_GENRE);
-						String[] reviews = (String[])JSONPlay.get(EVENT_REVIEWS);
-						String[] actors = (String[])JSONPlay.get(EVENT_ACTORS);
-						String[] producers = (String[])JSONPlay.get(EVENT_PRODUCERS);
-						String[] playwrites = (String[])JSONPlay.get(PLAY_PLAYWRITES);
+						JSONArray reviewsJSON = (JSONArray)JSONPlay.get(EVENT_REVIEWS);
+						String[] reviews = new String[reviewsJSON.size()];
+						for(int m = 0; m < reviewsJSON.size(); m++) {
+							reviews[m] = (String)reviewsJSON.get(m);
+						}
+						JSONArray actorsJSON = (JSONArray)JSONPlay.get(EVENT_ACTORS);
+						String[] actors = new String[actorsJSON.size()];
+						for(int m = 0; m < actorsJSON.size(); m++) {
+							actors[m] = (String)actorsJSON.get(m);
+						}
+						JSONArray producersJSON = (JSONArray)JSONPlay.get(EVENT_PRODUCERS);
+						String[] producers = new String[producersJSON.size()];
+						for(int m = 0; m < producersJSON.size(); m++) {
+							producers[m] = (String)producersJSON.get(m);
+						}
+						JSONArray playwritesJSON = (JSONArray)JSONPlay.get(PLAY_PLAYWRITES);
+						String[] playwrites = new String[producersJSON.size()];
+						for(int m = 0; m < playwritesJSON.size(); m++) {
+							playwrites[m] = (String)playwritesJSON.get(m);
+						}
 						Play play = new Play(venue,venue.theaters.get(j),startTime,
 								endTime,name,description,ageRating,price,genre,actors,producers,playwrites);
 						for(int rev = 0; rev < reviews.length; rev++) {
@@ -105,19 +144,31 @@ public class JSONHandler extends JSONConstants{
 						}
 						shows.add(play);
 					}
-					JSONArray JSONConcerts = (JSONArray)JSONShowsObj.get(CONCERTS);
+					JSONArray JSONConcerts = (JSONArray)JSONShows.get(CONCERTS);
 					for(int k = 0; k < JSONConcerts.size(); k++) {
 						JSONObject JSONConcert = (JSONObject)JSONConcerts.get(k);
 						String startTime = (String)JSONConcert.get(EVENT_START_TIME);
 						String endTime = (String)JSONConcert.get(EVENT_END_TIME);
 						String name = (String)JSONConcert.get(EVENT_NAME);
 						String description = (String)JSONConcert.get(EVENT_DESCRIPTION);
-						String ageRating = (String)JSONConcert.get(EVENT_START_TIME);
-						double[] userRating = (double[])JSONConcert.get(EVENT_USER_RATING);
+						String ageRating = (String)JSONConcert.get(EVENT_AGE_RATING);
+						JSONArray userRatingJSON = (JSONArray)JSONConcert.get(EVENT_USER_RATING);
+						double[] userRating = new double[userRatingJSON.size()];
+						for(int m = 0; m < userRatingJSON.size(); m++) {
+							userRating[m] = (double)userRatingJSON.get(m);
+						}
 						double price = (double)JSONConcert.get(EVENT_PRICE);
 						String genre = (String)JSONConcert.get(EVENT_GENRE);
-						String[] reviews = (String[])JSONConcert.get(EVENT_REVIEWS);
-						String[] performers = (String[])JSONConcert.get(CONCERT_PERFORMERS);
+						JSONArray reviewsJSON = (JSONArray)JSONConcert.get(EVENT_REVIEWS);
+						String[] reviews = new String[reviewsJSON.size()];
+						for(int m = 0; m < reviewsJSON.size(); m++) {
+							reviews[m] = (String)reviewsJSON.get(m);
+						}
+						JSONArray performersJSON = (JSONArray)JSONConcert.get(CONCERT_PERFORMERS);
+						String[] performers = new String[performersJSON.size()];
+						for(int m = 0; m < performersJSON.size(); m++) {
+							performers[m] = (String)performersJSON.get(m);
+						}
 						Concert concert = new Concert(venue,venue.theaters.get(j),startTime,
 								endTime,name,description,ageRating,price,genre,performers);
 						for(int rev = 0; rev < reviews.length; rev++) {
@@ -259,7 +310,7 @@ public class JSONHandler extends JSONConstants{
 		shows.add(concerts);
 		theaterDetails.put(SHOWS, shows);
 		for(int i = 0; i < theater.seats.size(); i++) {
-			shows.add(getSeatJSON(theater.seats.get(i)));
+			seats.add(getSeatJSON(theater.seats.get(i)));
 		}
 		theaterDetails.put(THEATER_SEATS, seats);
 		return theaterDetails;
@@ -277,22 +328,67 @@ public class JSONHandler extends JSONConstants{
 		showDetails.put(EVENT_NAME, show.name);
 		showDetails.put(EVENT_DESCRIPTION, show.description);
 		showDetails.put(EVENT_AGE_RATING, show.ageRating);
-		showDetails.put(EVENT_USER_RATING, show.userRating);
+		if(show.userRating == null) {
+			showDetails.put(EVENT_USER_RATING, new JSONArray());
+		} else {
+			JSONArray userRating = new JSONArray();
+			for(int i = 0; i < show.userRating.size(); i++) {
+				userRating.add(show.userRating.get(i));
+			}
+			showDetails.put(EVENT_USER_RATING, userRating);
+		}
 		showDetails.put(EVENT_PRICE, show.price);
-		showDetails.put(EVENT_REVIEWS, show.reviews);
+		showDetails.put(EVENT_GENRE, show.genre);
+		if(show.reviews == null) {
+			showDetails.put(EVENT_REVIEWS, new JSONArray());
+		} else {
+			JSONArray reviews = new JSONArray();
+			for(int i = 0; i < show.reviews.size(); i++) {
+				reviews.add(show.reviews.get(i));
+			}
+			showDetails.put(EVENT_REVIEWS, reviews);
+		}
 		if(show.getClass().getName().contains("Movie")) {
 			Movie movie = (Movie) show;
-			showDetails.put(EVENT_ACTORS, movie.actors);
-			showDetails.put(EVENT_PRODUCERS, movie.producers);
-			showDetails.put(MOVIE_DIRECTORS, movie.directors);
+			JSONArray actors = new JSONArray();
+			for(int i = 0; i < movie.actors.length; i++) {
+				actors.add(movie.actors[i]);
+			}
+			showDetails.put(EVENT_ACTORS, actors);
+			JSONArray producers = new JSONArray();
+			for(int i = 0; i < movie.producers.length; i++) {
+				producers.add(movie.producers[i]);
+			}
+			showDetails.put(EVENT_PRODUCERS, producers);
+			JSONArray directors = new JSONArray();
+			for(int i = 0; i < movie.directors.length; i++) {
+				directors.add(movie.directors[i]);
+			}
+			showDetails.put(MOVIE_DIRECTORS, directors);
 		} else if(show.getClass().getName().contains("Play")) {
 			Play play = (Play) show;
-			showDetails.put(EVENT_ACTORS, play.actors);
-			showDetails.put(EVENT_PRODUCERS, play.producers);
+			JSONArray actors = new JSONArray();
+			for(int i = 0; i < play.actors.length; i++) {
+				actors.add(play.actors[i]);
+			}
+			showDetails.put(EVENT_ACTORS, actors);
+			JSONArray producers = new JSONArray();
+			for(int i = 0; i < play.producers.length; i++) {
+				producers.add(play.producers[i]);
+			}
+			showDetails.put(EVENT_PRODUCERS, producers);
+			JSONArray playwrites = new JSONArray();
+			for(int i = 0; i < play.playwrites.length; i++) {
+				playwrites.add(play.playwrites[i]);
+			}
 			showDetails.put(PLAY_PLAYWRITES, play.playwrites);
 		} else if(show.getClass().getName().contains("Concert")) {
 			Concert concert = (Concert) show;
-			showDetails.put(CONCERT_PERFORMERS, concert.performers);
+			JSONArray performers = new JSONArray();
+			for(int i = 0; i < concert.performers.length; i++) {
+				performers.add(concert.performers[i]);
+			}
+			showDetails.put(CONCERT_PERFORMERS, performers);
 		}
 		
 		return showDetails;
@@ -307,7 +403,8 @@ public class JSONHandler extends JSONConstants{
 		JSONObject seatDetails = new JSONObject();
 		seatDetails.put(SEATS_HANDICAPABLE, seat.isHandicapable);
 		seatDetails.put(SEATS_RESERVED, seat.isReserved);
-		seatDetails.put(SEATS_ROW, seat.row);
+		String row = String.valueOf(seat.row);
+		seatDetails.put(SEATS_ROW, row);
 		seatDetails.put(SEATS_COL, seat.col);
 		return seatDetails;
 	}

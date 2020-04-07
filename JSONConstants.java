@@ -11,9 +11,9 @@ public abstract class JSONConstants {
 	protected static final String VENUE_NAME = "venueName";
 	protected static final String THEATERS = "theaters";
 	protected static final String SHOWS = "shows";
-	protected static final String MOVIES = "movies";
-	protected static final String PLAYS = "plays";
-	protected static final String CONCERTS = "concerts";
+	protected static final int MOVIES = 0;
+	protected static final int PLAYS = 1;
+	protected static final int CONCERTS = 2;
 	protected static final String EVENT_START_TIME = "startTime";
 	protected static final String EVENT_END_TIME = "endTime";
 	protected static final String EVENT_NAME = "name";
