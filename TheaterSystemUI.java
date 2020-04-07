@@ -502,13 +502,15 @@ public class TheaterSystemUI {
 	              if (startTime.length() != 8) {
 	                System.out.println("Invalid time format, please try again.");
 	              } else {
-	                  int hour = Integer.parseInt(startTime.substring(0,1));
-	                  int minute = Integer.parseInt(startTime.substring(3,4));
-	                  String am_PM = startTime.substring(6,7);
+	                  int hour = Integer.parseInt(startTime.substring(0,2));
+	                  int minute = Integer.parseInt(startTime.substring(3,5));
+	                  String am_PM = startTime.substring(6,8);
+	                  
 	                  if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equals("AM") || am_PM.equals("PM"))) {
                         startLoop = false;
-                      } 
-                      System.out.println("INVALID FORMAT");  
+                      } else {
+                        System.out.println("INVALID FORMAT");  
+                      }
 	              }
 	            }
 	            
@@ -520,13 +522,14 @@ public class TheaterSystemUI {
 	              if (endTime.length() != 8) {
 	                System.out.println("Invalid time format, please try again.");
 	              } else {
-	                  int hour = Integer.parseInt(endTime.substring(0,1));
-	                  int minute = Integer.parseInt(endTime.substring(3,4));
-	                  String am_PM = endTime.substring(6,7);
+	                  int hour = Integer.parseInt(endTime.substring(0,2));
+	                  int minute = Integer.parseInt(endTime.substring(3,5));
+	                  String am_PM = endTime.substring(6,8);
 	                  if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equals("AM") || am_PM.equals("PM"))) {
 	                    endLoop = false;
-	                  } 
-	                  System.out.println("INVALID FORMAT");
+	                  } else {
+	                    System.out.println("INVALID FORMAT");
+	                  }
 	              }            
 	          }
 	            
@@ -651,13 +654,15 @@ public class TheaterSystemUI {
                   if (pStartTime.length() != 8) {
                     System.out.println("Invalid time format, please try again.");
                   } else {
-                      int hour = Integer.parseInt(pStartTime.substring(0,1));
-                      int minute = Integer.parseInt(pStartTime.substring(3,4));
-                      String am_PM = pStartTime.substring(6,7);
-                      if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equals("AM") || am_PM.equals("PM"))) {
+                      int hour = Integer.parseInt(pStartTime.substring(0,2));
+                      int minute = Integer.parseInt(pStartTime.substring(3,5));
+                      String am_PM = pStartTime.substring(6,8);
+                      
+                      if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equalsIgnoreCase("AM") || am_PM.equalsIgnoreCase("PM"))) {
                         pStartLoop = false;
-                      } 
-                      System.out.println("INVALID FORMAT");  
+                      } else {
+                        System.out.println("INVALID FORMAT");  
+                      }
                   }
                 }
                 
@@ -669,13 +674,15 @@ public class TheaterSystemUI {
                   if (pEndTime.length() != 8) {
                     System.out.println("Invalid time format, please try again.");
                   } else {
-                      int hour = Integer.parseInt(pEndTime.substring(0,1));
-                      int minute = Integer.parseInt(pEndTime.substring(3,4));
-                      String am_PM = pEndTime.substring(6,7);
+                      int hour = Integer.parseInt(pEndTime.substring(0,2));
+                      int minute = Integer.parseInt(pEndTime.substring(3,5));
+                      String am_PM = pEndTime.substring(6,8);
+                      
                       if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equals("AM") || am_PM.equals("PM"))) {
                         pEndLoop = false;
-                      } 
-                      System.out.println("INVALID FORMAT");  
+                      } else {
+                        System.out.println("INVALID FORMAT"); 
+                      }
                   }
                 }
                 
@@ -775,13 +782,14 @@ public class TheaterSystemUI {
                   if (cStartTime.length() != 8) {
                     System.out.println("Invalid time format, please try again.");
                   } else {
-                      int hour = Integer.parseInt(cStartTime.substring(0,1));
-                      int minute = Integer.parseInt(cStartTime.substring(3,4));
-                      String am_PM = cStartTime.substring(6,7);
+                      int hour = Integer.parseInt(cStartTime.substring(0,2));
+                      int minute = Integer.parseInt(cStartTime.substring(3,5));
+                      String am_PM = cStartTime.substring(6,8);
                       if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equals("AM") || am_PM.equals("PM"))) {
                         cStartLoop = false;
-                      } 
-                      System.out.println("INVALID FORMAT");  
+                      } else {
+                        System.out.println("INVALID FORMAT");
+                      }
                   }
                 }
                 
@@ -793,13 +801,14 @@ public class TheaterSystemUI {
                   if (cEndTime.length() != 8) {
                     System.out.println("Invalid time format, please try again.");
                   } else {
-                      int hour = Integer.parseInt(cEndTime.substring(0,1));
-                      int minute = Integer.parseInt(cEndTime.substring(3,4));
-                      String am_PM = cEndTime.substring(6,7);
+                      int hour = Integer.parseInt(cEndTime.substring(0,2));
+                      int minute = Integer.parseInt(cEndTime.substring(3,5));
+                      String am_PM = cEndTime.substring(6,8);
                       if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equals("AM") || am_PM.equals("PM"))) {
                         cEndLoop = false;
-                      } 
-                      System.out.println("INVALID FORMAT");  
+                      } else {
+                        System.out.println("INVALID FORMAT");
+                      }     
                   }
                 }
                 
