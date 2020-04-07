@@ -24,14 +24,16 @@ public class JSONHandler extends JSONConstants{
 	public static ArrayList<Venue> loadVenues() {
 		ArrayList<Venue> venues = new ArrayList<Venue>();
 		try {
-			FileReader reader = new FileReader(VENUES_FILENAME);
 			if(!new File(VENUES_FILENAME).exists()) {
 				new FileWriter(VENUES_FILENAME).flush();
+				return venues;
 			}
+			FileReader reader = new FileReader(VENUES_FILENAME);
 			JSONArray JSONVenues = (JSONArray)new JSONParser().parse(reader);
 			for(int i = 0; i < JSONVenues.size(); i++) {
 				JSONObject JSONVenue = (JSONObject)JSONVenues.get(i);
 				String venueName = (String)JSONVenue.get(VENUE_NAME);
+				System.out.println(venueName);
 				Venue venue = new Venue(venueName);
 				
 				JSONArray JSONTheaters = (JSONArray)JSONVenue.get(THEATERS);
@@ -46,17 +48,20 @@ public class JSONHandler extends JSONConstants{
 						JSONObject JSONSeat = (JSONObject)JSONSeats.get(k);
 						boolean isHandicapable = (boolean)JSONSeat.get(SEATS_HANDICAPABLE);
 						boolean isReserved = (boolean)JSONSeat.get(SEATS_RESERVED);
-						char row = (char)JSONSeat.get(SEATS_ROW);
-						int col = (int)JSONSeat.get(SEATS_COL);
-						Seat seat = new Seat(isHandicapable,row,col);
+						String row = (String)JSONSeat.get(SEATS_ROW);
+						char rowChar = (char)row.charAt(0);
+						String col = (String)JSONSeat.get(SEATS_COL);
+						int intCol = Integer.parseInt(col);
+						Seat seat = new Seat(isHandicapable,rowChar,intCol);
 						seat.setReserved(isReserved);
 						seats.add(seat);
 					}
 					venue.addTheater(seats);
-					JSONObject JSONShows = (JSONObject)JSONTheater.get(SHOWS);
+					JSONArray JSONShows = (JSONArray)JSONTheater.get(SHOWS);
 					ArrayList<Show> shows = new ArrayList<Show>();
 					
-					JSONArray JSONMovies = (JSONArray)JSONShows.get(MOVIES);					
+					JSONObject JSONShowsObj = (JSONObject)JSONShows.get(0);
+					JSONArray JSONMovies = (JSONArray)JSONShowsObj.get(MOVIES);
 					for(int k = 0; k < JSONMovies.size(); k++) {
 						JSONObject JSONMovie = (JSONObject)JSONMovies.get(k);
 						String startTime = (String)JSONMovie.get(EVENT_START_TIME);
@@ -78,7 +83,7 @@ public class JSONHandler extends JSONConstants{
 						}
 						shows.add(movie);
 					}
-					JSONArray JSONPlays = (JSONArray)JSONShows.get(PLAYS);
+					JSONArray JSONPlays = (JSONArray)JSONShowsObj.get(PLAYS);
 					for(int k = 0; k < JSONPlays.size(); k++) {
 						JSONObject JSONPlay = (JSONObject)JSONPlays.get(k);
 						String startTime = (String)JSONPlay.get(EVENT_START_TIME);
@@ -100,7 +105,7 @@ public class JSONHandler extends JSONConstants{
 						}
 						shows.add(play);
 					}
-					JSONArray JSONConcerts = (JSONArray)JSONShows.get(CONCERTS);
+					JSONArray JSONConcerts = (JSONArray)JSONShowsObj.get(CONCERTS);
 					for(int k = 0; k < JSONConcerts.size(); k++) {
 						JSONObject JSONConcert = (JSONObject)JSONConcerts.get(k);
 						String startTime = (String)JSONConcert.get(EVENT_START_TIME);
@@ -140,10 +145,11 @@ public class JSONHandler extends JSONConstants{
 	public static ArrayList<User> loadAccounts() {
 		ArrayList<User> users = new ArrayList<User>();
 		try {
-			FileReader reader = new FileReader(ACCOUNTS_FILENAME);
 			if(!new File(ACCOUNTS_FILENAME).exists()) {
 				new FileWriter(ACCOUNTS_FILENAME).flush();
+				return users;
 			}
+			FileReader reader = new FileReader(ACCOUNTS_FILENAME);
 			JSONArray JSONUsers = (JSONArray)new JSONParser().parse(reader);
 			for(int i = 0; i < JSONUsers.size(); i++) {
 				JSONObject JSONUser = (JSONObject)JSONUsers.get(i);
