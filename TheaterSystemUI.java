@@ -512,7 +512,17 @@ public class TheaterSystemUI {
 	 
 	
 	private void removeEvent() {
-	  
+	  System.out.println("Please enter the name of the event you would like to remove");
+	  String input = key.nextLine();
+	  ArrayList<Show> results = ts.searchShowName(input);
+	  for(int i = 1; i <= results.size(); i++) {
+		  System.out.println("" + i + results.get(i-1).toString());
+	  }
+	  System.out.println("Please enter the number of the event you would like to remove");
+	  int deleteNum = key.nextInt();
+	  key.hasNextLine();
+	  results.get(deleteNum-1).theater.shows.remove(results.get(deleteNum-1));
+	  System.out.println("Show deleted");
 	}
 
 	private void displayEventList() {
