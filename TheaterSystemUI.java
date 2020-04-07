@@ -42,6 +42,10 @@ public class TheaterSystemUI {
         System.out.print("Thank you for using the Theater System.");
     }
     
+    /**
+     * Checks what account is currently logged in
+     * @param account - The account being checked for admin, employee, user, or guest
+     */
     private void checkAccountType(String account) {
       switch(account) {
         case "User":
@@ -59,6 +63,9 @@ public class TheaterSystemUI {
       }
     }
     
+    /**
+     * Logs the user into the movie system
+     */
 	private void login() {
 	  System.out.println("Enter your first name:");
 	  String firstName = key.next();
@@ -69,6 +76,9 @@ public class TheaterSystemUI {
 	  tsUI.checkAccountType(ts.login(firstName, lastName, password));
 	} 
 
+	/**
+	 * Creates one of three different accounts: User, Admin, Employee
+	 */
 	private void createAccount() {
 	  boolean employeeLoop = true;
 	  boolean adminLoop = true;
@@ -115,6 +125,9 @@ public class TheaterSystemUI {
       tsUI.checkAccountType(ts.login(firstName, lastName, password));
 	}
 
+	/**
+	 * Displays the user-interface for guests
+	 */
 	private void displayGuest() {
 	  System.out.println("Welcome, Guest.");
 	  while(quit == false) {
@@ -155,6 +168,9 @@ public class TheaterSystemUI {
 	  }
 	}
 
+	/**
+	 * Displays the user-interface for users
+	 */
 	private void displayUser() {
 	  System.out.println("Welcome, " + ts.currentAccount.firstName +".");
       while(quit == false) {
@@ -203,6 +219,9 @@ public class TheaterSystemUI {
       } 
 	}
 
+	/**
+	 * Displays the user-interface for employees
+	 */
 	private void displayEmployee() {
 	  System.out.println("Welcome, " + ts.currentAccount.firstName +".");
 	  while(quit == false) {
@@ -260,6 +279,9 @@ public class TheaterSystemUI {
 	  
 	}
 
+	/**
+	 * Displays the user-interface for admin
+	 */
 	private void displayAdmin() {
 	  System.out.println("Welcome, Admin: " + ts.currentAccount.firstName +".");
 	  while(quit == false) {
@@ -432,46 +454,49 @@ public class TheaterSystemUI {
 	              directors[i] = key.nextLine();
 	            }
 	            
-	            System.out.println("Please enter the start time for the movie in the hh/mm AM/PM format with a space in-between the time and AM or PM:");
+	            System.out.println("Please enter the start time for the movie in the hh/mm AM/PM format with a space in-between. EX: 08:30 AM");
 	            boolean startLoop = true;
-	            String startTime = key.nextLine();
+	            String startTime = "";
 	            while (startLoop != false) {
-	              
-	              
-	              int hour = Integer.parseInt(startTime.substring(0,1));
-	              int minute = Integer.parseInt(startTime.substring(3,4));
-	              String am_PM = startTime.substring(6,7);
-	              if (hour > 13 || hour < 0) {
-	                System.out.println("Hour invalid, please enter valid time.");
-	              } else if (minute >= 60 || minute < 0) {
-	                System.out.println("Minute invalid, please enter valid time.");
-	              } else if(!am_PM.equalsIgnoreCase("AM") || !am_PM.equalsIgnoreCase("PM")) {
-	                System.out.println("Please enter AM or PM one space after the time");
+	              startTime = key.nextLine();
+	              if (startTime.length() != 8) {
+	                System.out.println("Invalid time format, please try again.");
+	              } else {
+	                  int hour = Integer.parseInt(startTime.substring(0,1));
+	                  int minute = Integer.parseInt(startTime.substring(3,4));
+	                  String am_PM = startTime.substring(6,7);
+	                  if (hour > 13 || hour < 0) {
+	                    System.out.println("Hour invalid, please enter valid time.");
+	                  } else if (minute >= 60 || minute < 0) {
+	                    System.out.println("Minute invalid, please enter valid time.");
+	                  } else if(!am_PM.equalsIgnoreCase("AM") || !am_PM.equalsIgnoreCase("PM")) {
+	                    System.out.println("Please enter AM or PM one space after the time");
+	                  }   
+	                  startLoop = false;
 	              }
-	              
-	              startLoop = false;
 	            }
 	            
-	            
-	            System.out.println("Please enter the end time for the movie:");
+	            System.out.println("Please enter the end time for the movie:  EX: 08:30 AM");
 	            boolean endLoop = true;
-	            String endTime = key.nextLine();
+	            String endTime = "";
 	            while (endLoop != false) {
-	              
-	              
-	              int hour = Integer.parseInt(endTime.substring(0,1));
-	              int minute = Integer.parseInt(endTime.substring(3,4));
-	              String am_PM = endTime.substring(6,7);
-	              if (hour > 13 || hour < 0) {
-	                System.out.println("Hour invalid, please enter valid time.");
-	              } else if (minute >= 60 || minute < 0) {
-	                System.out.println("Minute invalid, please enter valid time.");
-	              } else if(!am_PM.equalsIgnoreCase("AM") || !am_PM.equalsIgnoreCase("PM")) {
-	                System.out.println("Please enter AM or PM one space after the time.");
-	              }
-	              
-	              endLoop = false;
-	            }
+	              endTime = key.nextLine();
+	              if (endTime.length() != 8) {
+	                System.out.println("Invalid time format, please try again.");
+	              } else {
+	                  int hour = Integer.parseInt(endTime.substring(0,1));
+	                  int minute = Integer.parseInt(endTime.substring(3,4));
+	                  String am_PM = endTime.substring(6,7);
+	                  if (hour > 13 || hour < 0) {
+	                    System.out.println("Hour invalid, please enter valid time.");
+	                  } else if (minute >= 60 || minute < 0) {
+	                    System.out.println("Minute invalid, please enter valid time.");
+	                  } else if(!am_PM.equalsIgnoreCase("AM") || !am_PM.equalsIgnoreCase("PM")) {
+	                    System.out.println("Please enter AM or PM one space after the time.");
+	                  }   
+	                  endLoop = false;
+	              }            
+	          }
 	            
 	            System.out.println("Enter the venue that the movie is going to be shown at:");
 	            boolean venLoop = true;
