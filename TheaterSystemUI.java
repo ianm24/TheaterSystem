@@ -605,7 +605,37 @@ public class TheaterSystemUI {
 	}
 	
 	private void removeReview() {
-	  
+	  System.out.println("What is the name of the event would you like to remove the review of?");
+      boolean quit = false;
+      Show currShow = null;
+      while (!quit) {
+          String showName = key.nextLine();
+          ArrayList<Show> results = ts.searchShowName(showName);
+          for(Show show : results) {
+              if(show.name.equalsIgnoreCase(showName)) {
+                  currShow = show;
+                  quit = true;
+              } else {
+                  System.out.println("That is not the name of an even stored in the system, please enter a valid event name.");
+              }
+          }
+      }
+      quit = false;
+      System.out.println("Please enter the rating from the review you want to remove:");
+      double rating = key.nextDouble();
+      while(!quit) {
+          rating = Math.round(rating*10);
+          rating = rating / 10;
+          if(rating <= 10 && rating >= 0) {
+              quit = true;
+          } else {
+              System.out.println("Make sure the rating entered is correct (between 0 and 10)");
+          }
+      }
+      key.hasNextLine();
+      System.out.println("Enter the text of the review you want to remove word for word:");
+      String review = key.nextLine();
+      ts.deleteReview(rating, review, currShow);
 	}
 }
 
