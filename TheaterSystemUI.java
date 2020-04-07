@@ -343,6 +343,9 @@ public class TheaterSystemUI {
 	  
 	}
 
+	/**
+	 * Searches for a show by name
+	 */
 	private void searchByName() {
 		System.out.println("What is the name of the show you would like to search for?");
 		String showName = key.nextLine();
@@ -365,16 +368,28 @@ public class TheaterSystemUI {
 	}
 
 	/**
-	 * Searches for a show by it's rating
+	 * Searches for a show by it's age rating
 	 */
-	private void searchByRating() {
-      System.out.println("What is the rating of the show you would like to search for?");
+	private void searchByAgeRating() {
+      System.out.println("What is the age rating of the show you would like to search for?");
       String rating = key.nextLine();
-      ArrayList<Show> results = ts.searchGenre(rating);
+      ArrayList<Show> results = ts.searchAgeRating(rating);
       for(Show show : results) {
           System.out.println(show.toString());
       }
 	}
+	
+	/**
+     * Searches for a show by it's age rating
+     */
+    private void searchByUserRating() {
+      System.out.println("What is the user rating of the show you would like to search for?");
+      double rating = key.nextDouble();
+      ArrayList<Show> results = ts.searchRating(rating);
+      for(Show show : results) {
+          System.out.println(show.toString());
+      }
+    }
 	
 	/**
 	 * Adds a show to the theater system
