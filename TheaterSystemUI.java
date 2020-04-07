@@ -69,8 +69,6 @@ public class TheaterSystemUI {
 	} 
 
 	private void createAccount() {
-	  //String firstName, String lastName, String phoneNumber, String password,
-	  //boolean isEmployee,boolean isAdmin
 	  boolean employeeLoop = true;
 	  boolean adminLoop = true;
 	  boolean isEmployee = false, isAdmin = false;
@@ -117,8 +115,9 @@ public class TheaterSystemUI {
 	}
 
 	private void displayGuest() {
+	  System.out.println("Welcome, Guest.");
 	  while(quit == false) {
-	    System.out.println("Welcome Guest, please select from the following options:\n1. Display the list of events"
+	    System.out.println("Please select from the following options:\n1. Display the list of events"
 	      + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating"
 	      + "\n5. Purchase ticket\n6. Quit");
 	    int response = key.nextInt();
@@ -156,8 +155,9 @@ public class TheaterSystemUI {
 	}
 
 	private void displayUser() {
+	  System.out.println("Welcome, " + ts.currentAccount.firstName +".");
       while(quit == false) {
-        System.out.println("Welcome, " + ts.currentAccount.firstName + "!\nPlease select from the following options:\n1. Display the list of events"
+        System.out.println("Please select from the following options:\n1. Display the list of events"
            + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating"
            + "\n5. Purchase ticket \n6. Get a refund \n7. Leave a review \n8. Quit");
         int response = key.nextInt();
@@ -203,9 +203,9 @@ public class TheaterSystemUI {
 	}
 
 	private void displayEmployee() {
-
+	  System.out.println("Welcome, " + ts.currentAccount.firstName +".");
 	  while(quit == false) {
-        System.out.println("Welcome, "+ts.currentAccount.firstName+", please select from the following "
+        System.out.println("Please select from the following "
             + "options:\n1. Display the list of events\n2. Search for events by name\n3. Search for events"
             + " by genre\n4. Search for events by rating\n5. Purchase ticket\n6. "
             + "Get a refund\n7. Leave a review\n8. Add a show\n9. Remove a show\n10. Quit");
@@ -260,9 +260,9 @@ public class TheaterSystemUI {
 	}
 
 	private void displayAdmin() {
-	  
+	  System.out.println("Welcome, Admin: " + ts.currentAccount.firstName +".");
 	  while(quit == false) {
-        System.out.println("Welcome, Admin: " + ts.currentAccount.firstName + "!\nPlease select from the following options:\n1. Display the list of events"
+        System.out.println("Please select from the following options:\n1. Display the list of events"
            + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating"
            + "\n5. Purchase ticket \n6. Get a refund \n7. Leave a review \n8. Remove a review \n9. Add show \n10. Remove show \n11. Quit");
         int response = key.nextInt();
@@ -506,11 +506,39 @@ public class TheaterSystemUI {
 	}
 
 	private void purchaseTicket() {
-
+	  System.out.println("What is the name of the show you would like to purchase a ticket for?");
+      String showName = key.nextLine();
+      ArrayList<Show> results = ts.searchShowName(showName);
+      Show show;
+      for(Show s : results) {
+        show = s;
+        System.out.println("Would you like to purchase a specific seat? Enter yes or no:");
+        String response = key.nextLine();
+        if (response.equalsIgnoreCase("yes")) {
+          System.out.println("Enter the letter of the seat you would like:");
+          char row = key.nextLine().charAt(0);
+          System.out.println("Enter the number of the column of the seat you would like:");
+          int col = key.nextInt();
+          ts.purchaseTicket(show, row, col);
+        }
+        else if (response.equalsIgnoreCase("no")) {
+          ts.purchaseTicket(show);
+        }
+        else {
+          System.out.println("Incorrect input, ticket purchasing cancelled.");
+        }
+      }
 	}
 	
 	private void getRefund() {
-	  
+	  System.out.println("What is the name of the show you would like to purchase a ticket for?");
+      String showName = key.nextLine();
+      ArrayList<Show> results = ts.searchShowName(showName);
+      Show show;
+      for(Show s : results) {
+        show = s;
+        System.out.println(ts.refundTicket(show));
+      }
 	}
 	
 	private void leaveReview() {
