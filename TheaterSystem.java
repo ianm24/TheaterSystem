@@ -60,7 +60,7 @@ public class TheaterSystem {
 	}
 
 	/**
-	 * Helper method that updates the
+	 * Helper method that updates the current account type
 	 */
 	private void updateAccountType() {
 		if (currentAccount.getClass().getName().contains("User")) {
@@ -181,6 +181,13 @@ public class TheaterSystem {
 		return matches;
 	}
 
+	/**
+	 * This returns a specific seat given a row and column 
+	 * @param theater
+	 * @param row
+	 * @param col
+	 * @return
+	 */
 	public Seat seatSearch(Theater theater, char row, int col) {
 		for (Seat seat : theater.seats) {
 			if (seat.row == row && seat.col == col && seat.isReserved == false)
@@ -188,7 +195,12 @@ public class TheaterSystem {
 		}
 		return null;
 	}
-
+	
+	/**
+	 * Method that searches for the next available seat
+	 * @param theater that the seat is in
+	 * @return a seat
+	 */
 	public Seat nextSeatSearch(Theater theater) {
 		for (Seat seat : theater.seats)
 			if (seat.isReserved == false)
@@ -243,7 +255,7 @@ public class TheaterSystem {
 	}
 
 	/**
-	 * Used to print the ticket
+	 * Prints out the ticket for someone
 	 * @param show the show whose ticket is getting printed
 	 * @return a string with the information for the show
 	 */
@@ -252,10 +264,10 @@ public class TheaterSystem {
             FileWriter writer = new FileWriter(show.name+"ticket.txt");
             writer.write("******************************\n");
             writer.write("*****     " +currentAccount.firstName+ "'s Ticket     *****\n");
-            writer.write("Show: "+show.name+"\n");
-            writer.write("Start time: "+show.startTime+"\n");
-            writer.write("End time: "+show.endTime+"\n");
-            writer.write("Your Seat is: "+seat.row+seat.col+"\n");
+            writer.write("   Show: "+show.name+"\n");
+            writer.write("   Start time: "+show.startTime+"\n");
+            writer.write("   End time: "+show.endTime+"\n");
+            writer.write("   Your Seat is: "+seat.row+seat.col+"\n");
             writer.write("******************************\n");
             writer.close();
         } catch (Exception e) {
