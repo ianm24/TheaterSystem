@@ -541,15 +541,19 @@ public class TheaterSystemUI {
       }
 	}
 	
+	/**
+	 * Allows user to leave a review
+	 */
 	private void leaveReview() {
 		System.out.println("What is the name of the event would you like to leave a review for?");
 		boolean quit = false;
+		Show currShow = null;
 		while (!quit) {
 			String showName = key.nextLine();
 			ArrayList<Show> results = ts.searchShowName(showName);
 			for(Show show : results) {
 				if(show.name.equalsIgnoreCase(showName)) {
-					Show currShow = show;
+					currShow = show;
 					quit = true;
 				} else {
 					System.out.println("That is not the name of an even stored in the system, please enter a valid event name.");
@@ -558,9 +562,21 @@ public class TheaterSystemUI {
 		}
 		quit = false;
 		System.out.println("Please enter a rating out of 10:");
+		double rating = key.nextDouble();
 		while(!quit) {
-//			if()
+			rating = Math.round(rating*10);
+			rating = rating / 10;
+			if(rating <= 10 && rating >= 0) {
+				quit = true;
+			} else {
+				System.out.println("Make sure your rating is between 0 and 10");
+			}
 		}
+		key.hasNextLine();
+		System.out.println("Please enter a review:");
+		String review = key.nextLine();
+		currShow.addRating(rating, review);
+		System.out.println("Rating has been added! Thanks for your feedback!");
 	}
 	
 	private void removeReview() {
