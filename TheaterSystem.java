@@ -40,9 +40,9 @@ public class TheaterSystem {
 	/**
 	 * sets the currentAccount to the person who is logging in
 	 * 
-	 * @param firstName
-	 * @param lastName
-	 * @param password
+	 * @param firstName The first name of the user
+	 * @param lastName The last name of the user
+	 * @param password The password of the user
 	 * @return true if the login is successful but false otherwise
 	 */
 	public String login(String firstName, String lastName, String password) {
@@ -75,12 +75,12 @@ public class TheaterSystem {
 	/**
 	 * Creates an account and adds it to the accounts ArrayList
 	 * 
-	 * @param firstName
-	 * @param lastName
-	 * @param phoneNumber
-	 * @param password
-	 * @param isEmployee
-	 * @param isAdmin
+	 * @param firstName The first name of the new account
+	 * @param lastName The last name of the new account
+	 * @param phoneNumber The phone number of the new account 
+	 * @param password The password of the new account
+	 * @param isEmployee Is the new user an employee
+	 * @param isAdmin Is the new user an Admin
 	 * @return confirmation message
 	 */
 	public String createAccount(String firstName, String lastName, String phoneNumber, String password,
@@ -108,7 +108,7 @@ public class TheaterSystem {
 	/**
 	 * returns an ArrayList of shows if the name matches
 	 * 
-	 * @param showName
+	 * @param showName The name of the show to search for
 	 * @return ArrayList of the matching shows
 	 */
 	public ArrayList<Show> searchShowName(String showName) {
@@ -127,7 +127,7 @@ public class TheaterSystem {
 	/**
 	 * returns an ArrayList of shows if the genre matches
 	 * 
-	 * @param showGenre
+	 * @param showGenre The genre of the show to search for
 	 * @return ArrayList of the matching shows
 	 */
 	public ArrayList<Show> searchGenre(String genre) {
@@ -146,8 +146,8 @@ public class TheaterSystem {
 	/**
 	 * Searches for all shows within 0.1 stars of the parameters
 	 * 
-	 * @param rating
-	 * @return
+	 * @param rating The rating to search shows for
+	 * @return ArrayList of the matching shows
 	 */
 	public ArrayList<Show> searchRating(Double rating) {
 		ArrayList<Show> matches = new ArrayList<Show>();
@@ -165,7 +165,7 @@ public class TheaterSystem {
 	/**
 	 * method to search by the age ratings of a movie
 	 * 
-	 * @param ageRating
+	 * @param ageRating The age rating to search shows 
 	 * @return an arrayList of matches to the rating
 	 */
 	public ArrayList<Show> searchAgeRating(String ageRating) {
@@ -209,8 +209,8 @@ public class TheaterSystem {
 	}
 
 	/**
-	 * 
-	 * @param show
+	 * Used to purchase a ticket for the next open seat of a show
+	 * @param show Show the ticket is for
 	 * @return Buys a random seat
 	 */
 	public String purchaseTicket(Show show) {
@@ -227,10 +227,10 @@ public class TheaterSystem {
 	}
 
 	/**
-	 * 
-	 * @param show
-	 * @param row
-	 * @param col  Buys a specific seat
+	 * Used to buy a ticket for a specific seat of a show
+	 * @param show Show the ticket is for
+	 * @param row Selected row
+	 * @param col  Selected col
 	 */
 	public String purchaseTicket(Show show, char row, int col) {
 		String print = "";
@@ -246,8 +246,8 @@ public class TheaterSystem {
 	}
 
 	/**
-	 * 
-	 * @param show
+	 * Refunds the ticket
+	 * @param show Show the ticket was for
 	 * @return Refunds a pre-purchased ticket
 	 */
 	public String refundTicket(Show show) {
@@ -279,6 +279,7 @@ public class TheaterSystem {
 	}
 
 	/**
+	 * Leaves a review on a show
 	 * @param rating is the rating of the show
 	 * @param review is the review of the show
 	 * @param show   the name of the show being altered Assigns a review to a
@@ -289,7 +290,7 @@ public class TheaterSystem {
 	}
 
 	/**
-	 * 
+	 * Deletes a review
 	 * @param rating is the pre-existing rating
 	 * @param review is the pre-existing review
 	 * @param show   the show that's getting thre review removed Removes the review
@@ -303,18 +304,18 @@ public class TheaterSystem {
 	}
 	
 	/**
-	 * add an event
-	 * @param theater
-	 * @param show
+	 * Used to add a show
+	 * @param theater Theater the show is being shown
+	 * @param show Show being shown
 	 */
 	public void addEvent(Theater theater, Show show) {
 		theater.shows.add(show);
 	}
 	
 	/**
-	 * visually displays available seats
-	 * @param theater
-	 * @return
+	 * Displays the seats of a theater
+	 * @param theater Theater whos seats are being shown
+	 * @return String containing the seats
 	 */
 	public String displaySeats(Theater theater) {
 		String seats = "";
@@ -337,11 +338,17 @@ public class TheaterSystem {
 		return seats;
 	}
 
+	/**
+	 * Saves current accounts and venues to JSON files
+	 */
 	public void saveToJSON() {
 		JSONHandler.saveAccounts(this.accounts);
 		JSONHandler.saveVenues(this.venues);
 	}
 
+	/**
+	 * Loads system accounts and venues from JSON files
+	 */
 	public void loadFromJSON() {
 		this.accounts = JSONHandler.loadAccounts();
 		this.venues = JSONHandler.loadVenues();

@@ -6,8 +6,8 @@ package TheaterSystem;
  *
  */
 public abstract class JSONConstants {
-	protected static final String VENUES_FILENAME = "venues.json";
-	protected static final String ACCOUNTS_FILENAME = "accounts.json";
+	protected static final String VENUES_FILENAME = "src/TheaterSystem/venues.json";
+	protected static final String ACCOUNTS_FILENAME = "src/TheaterSystem/accounts.json";
 	protected static final String VENUE_NAME = "venueName";
 	protected static final String THEATERS = "theaters";
 	protected static final String SHOWS = "shows";
