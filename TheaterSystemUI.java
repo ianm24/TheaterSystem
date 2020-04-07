@@ -115,8 +115,9 @@ public class TheaterSystemUI {
 	}
 
 	private void displayGuest() {
+	  System.out.println("Welcome, Guest.");
 	  while(quit == false) {
-	    System.out.println("Welcome Guest, please select from the following options:\n1. Display the list of events"
+	    System.out.println("Please select from the following options:\n1. Display the list of events"
 	      + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating"
 	      + "\n5. Purchase ticket\n6. Quit");
 	    int response = key.nextInt();
@@ -154,8 +155,9 @@ public class TheaterSystemUI {
 	}
 
 	private void displayUser() {
+	  System.out.println("Welcome, " + ts.currentAccount.firstName +".");
       while(quit == false) {
-        System.out.println("Welcome, " + ts.currentAccount.firstName + "!\nPlease select from the following options:\n1. Display the list of events"
+        System.out.println("Please select from the following options:\n1. Display the list of events"
            + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating"
            + "\n5. Purchase ticket \n6. Get a refund \n7. Leave a review \n8. Quit");
         int response = key.nextInt();
@@ -201,9 +203,9 @@ public class TheaterSystemUI {
 	}
 
 	private void displayEmployee() {
-
+	  System.out.println("Welcome, " + ts.currentAccount.firstName +".");
 	  while(quit == false) {
-        System.out.println("Welcome, "+ts.currentAccount.firstName+", please select from the following "
+        System.out.println("Please select from the following "
             + "options:\n1. Display the list of events\n2. Search for events by name\n3. Search for events"
             + " by genre\n4. Search for events by rating\n5. Purchase ticket\n6. "
             + "Get a refund\n7. Leave a review\n8. Add a show\n9. Remove a show\n10. Quit");
@@ -258,9 +260,9 @@ public class TheaterSystemUI {
 	}
 
 	private void displayAdmin() {
-	  
+	  System.out.println("Welcome, Admin: " + ts.currentAccount.firstName +".");
 	  while(quit == false) {
-        System.out.println("Welcome, Admin: " + ts.currentAccount.firstName + "!\nPlease select from the following options:\n1. Display the list of events"
+        System.out.println("Please select from the following options:\n1. Display the list of events"
            + "\n2. Search for events by name\n3. Search for events by genre\n4. Search for events by rating"
            + "\n5. Purchase ticket \n6. Get a refund \n7. Leave a review \n8. Remove a review \n9. Add show \n10. Remove show \n11. Quit");
         int response = key.nextInt();
