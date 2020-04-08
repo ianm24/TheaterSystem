@@ -121,8 +121,13 @@ public class TheaterSystemUI {
           System.out.println("Invalid Input.");
         }
       }
+      if(isAdmin == true && isEmployee == true) {
+        System.out.println("Sorry, something has gone wrong. You cannot be both an admin and an employee.");
+      }
+      else {
       ts.createAccount(firstName, lastName, phoneNumber, password, isEmployee, isAdmin);
       tsUI.checkAccountType(ts.login(firstName, lastName, password));
+      }
 	}
 
 	/**
@@ -502,13 +507,15 @@ public class TheaterSystemUI {
 	              if (startTime.length() != 8) {
 	                System.out.println("Invalid time format, please try again.");
 	              } else {
-	                  int hour = Integer.parseInt(startTime.substring(0,1));
-	                  int minute = Integer.parseInt(startTime.substring(3,4));
-	                  String am_PM = startTime.substring(6,7);
+	                  int hour = Integer.parseInt(startTime.substring(0,2));
+	                  int minute = Integer.parseInt(startTime.substring(3,5));
+	                  String am_PM = startTime.substring(6,8);
+	                  
 	                  if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equals("AM") || am_PM.equals("PM"))) {
                         startLoop = false;
-                      } 
-                      System.out.println("INVALID FORMAT");  
+                      } else {
+                        System.out.println("INVALID FORMAT");  
+                      }
 	              }
 	            }
 	            
@@ -520,13 +527,14 @@ public class TheaterSystemUI {
 	              if (endTime.length() != 8) {
 	                System.out.println("Invalid time format, please try again.");
 	              } else {
-	                  int hour = Integer.parseInt(endTime.substring(0,1));
-	                  int minute = Integer.parseInt(endTime.substring(3,4));
-	                  String am_PM = endTime.substring(6,7);
+	                  int hour = Integer.parseInt(endTime.substring(0,2));
+	                  int minute = Integer.parseInt(endTime.substring(3,5));
+	                  String am_PM = endTime.substring(6,8);
 	                  if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equals("AM") || am_PM.equals("PM"))) {
 	                    endLoop = false;
-	                  } 
-	                  System.out.println("INVALID FORMAT");
+	                  } else {
+	                    System.out.println("INVALID FORMAT");
+	                  }
 	              }            
 	          }
 	            
@@ -566,6 +574,288 @@ public class TheaterSystemUI {
 	            System.out.println("Successfully Added Event!");
 	            quit = true;
 	            break;
+	            
+	          case 2:
+	            System.out.println("Please enter the play's name:");
+                String pName = key.nextLine();
+                
+                System.out.println("Please enter an appropriate description:");
+                String pDescription = key.nextLine();
+                
+                System.out.println("Please enter the ageRating of the play choose from: G, PG, PG-13, R");
+                String pAgeRating = null;
+                boolean pAgeLoop = true;
+               
+                while (pAgeLoop != false) {
+                  pAgeRating  = key.nextLine();
+                  
+                  if (pAgeRating.equals("G") || pAgeRating.equals("PG") || pAgeRating.equals("PG-13") || pAgeRating.equals("R")) {
+                    pAgeLoop = false;
+                  } else {
+                    System.out.println("Please enter a valid response: G, PG, PG-13, R");
+                  }
+                }
+                
+                System.out.println("Please enter the price for the tickets:");
+                double pPrice = key.nextDouble();
+                key.nextLine();
+                
+                System.out.println("Please enter the genre of the play: American, Alternative, Classical, Comedy, Drama, French, Historical, and Romance");
+                String pGenre = null;
+                boolean pGenreLoop = true;
+                
+                while (pGenreLoop != false) {
+                  pGenre = key.nextLine();
+                  
+                  if (pGenre.equals("American") || pGenre.equals("Alternative") || pGenre.equals("Classical") ||  pGenre.equals("Comedy") || pGenre.equals("Drama") ||
+                      pGenre.equals("French") || pGenre.equals("Historical") || pGenre.equals("Romance")) {
+                    pGenreLoop = false;
+                      } else {
+                        System.out.println("Please enter one of the following genres: American, Alternative, Classical, Comedy, Drama, French, Historical, and Romance");
+                      }
+                }
+                
+                System.out.println("Please enter the number of actors for the play,"
+                    + "followed by all the actors for the play:");
+                System.out.println("Enter the number of actors.");
+                int paActorNum = key.nextInt();
+                key.nextLine();
+                
+                String[] pActors = new String[paActorNum];
+                for (int i = 0; i < pActors.length; i++) {
+                  System.out.println("Enter the name of the actor:");
+                  pActors[i] = key.nextLine();
+                }
+                
+                System.out.println("Please enter the number of producers for the play,"
+                    + "followed by all the producers for the play:");
+                System.out.println("Enter the number of producers.");
+                int pProducerNum = key.nextInt();
+                key.nextLine();
+                
+                String[] pProducers = new String[pProducerNum];
+                for (int i = 0; i < pProducers.length; i++) {
+                  System.out.println("Enter the name of the producer:");
+                  pProducers[i] = key.nextLine();
+                }
+                
+                System.out.println("Please enter the number of playwrites for the play,"
+                    + "followed by all the playwrites for the play:");
+                System.out.println("Enter the number of playwrites.");
+                int playwriteNum = key.nextInt();
+                key.nextLine();
+                
+                String[] playwriters = new String[playwriteNum];
+                for (int i = 0; i < playwriters.length; i++) {
+                  System.out.println("Enter the name of the directors:");
+                  playwriters[i] = key.nextLine();
+                }
+                
+                System.out.println("Please enter the start time for the play in the hh/mm AM/PM format with a space in-between. EX: 08:30 AM");
+                boolean pStartLoop = true;
+                String pStartTime = "";
+                while (pStartLoop != false) {
+                  pStartTime = key.nextLine();
+                  if (pStartTime.length() != 8) {
+                    System.out.println("Invalid time format, please try again.");
+                  } else {
+                      int hour = Integer.parseInt(pStartTime.substring(0,2));
+                      int minute = Integer.parseInt(pStartTime.substring(3,5));
+                      String am_PM = pStartTime.substring(6,8);
+                      
+                      if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equalsIgnoreCase("AM") || am_PM.equalsIgnoreCase("PM"))) {
+                        pStartLoop = false;
+                      } else {
+                        System.out.println("INVALID FORMAT");  
+                      }
+                  }
+                }
+                
+                System.out.println("Please enter the end time for the play in the hh/mm AM/PM format with a space in-between. EX: 08:30 AM");
+                boolean pEndLoop = true;
+                String pEndTime = "";
+                while (pEndLoop != false) {
+                  pEndTime = key.nextLine();
+                  if (pEndTime.length() != 8) {
+                    System.out.println("Invalid time format, please try again.");
+                  } else {
+                      int hour = Integer.parseInt(pEndTime.substring(0,2));
+                      int minute = Integer.parseInt(pEndTime.substring(3,5));
+                      String am_PM = pEndTime.substring(6,8);
+                      
+                      if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equals("AM") || am_PM.equals("PM"))) {
+                        pEndLoop = false;
+                      } else {
+                        System.out.println("INVALID FORMAT"); 
+                      }
+                  }
+                }
+                
+                System.out.println("Enter the venue that the play is going to be shown at:");
+                boolean pVenLoop = true;
+                Venue pReturnVenue = new Venue("");
+                
+                while (pVenLoop != false) {
+                 String venueName = key.nextLine();
+                 
+                 for (int i = 0; i < ts.venues.size(); i++) {
+                   if (ts.venues.get(i).getName().equalsIgnoreCase(venueName)) {
+                     pReturnVenue = ts.venues.get(i);
+                     pVenLoop = false;
+                   } else {
+                     System.out.println("That venue does not exist, please enter another venue name");
+                   }
+                 }
+               }
+                
+                System.out.println("Enter the number of the theater that the play is going to be shown at:");
+                boolean pTheaLoop = true;
+                int pTheaterNum = 0;
+                while(pTheaLoop != false) {
+                  theaterNum = key.nextInt();
+                  if (pReturnVenue.theaters.get(pTheaterNum -1) == null) {
+                  System.out.println("Sorry that theater does not exist, please enter a valid theater.");
+                } else {
+                  pTheaLoop = false;
+                }
+               }
+                
+              Play returnPlay = new Play (pReturnVenue, pReturnVenue.theaters.get(pTheaterNum-1), pStartTime, pEndTime, 
+                    pName, pDescription, pAgeRating, pPrice, pGenre, pActors, pProducers, playwriters);
+                ts.addEvent(pReturnVenue.theaters.get(pTheaterNum-1), returnPlay);
+                System.out.println("Successfully Added Event!");
+                quit = true;
+                break;
+                
+	          case 3:
+	            System.out.println("Please enter the concert's name:");
+                String cName = key.nextLine();
+                
+                System.out.println("Please enter an appropriate description:");
+                String cDescription = key.nextLine();
+                
+                System.out.println("Please enter the ageRating of the concert choose from: G, PG, PG-13, R");
+                String cAgeRating = null;
+                boolean cAgeLoop = true;
+               
+                while (cAgeLoop != false) {
+                  cAgeRating  = key.nextLine();
+                  
+                  if (cAgeRating.equals("G") || cAgeRating.equals("PG") || cAgeRating.equals("PG-13") || cAgeRating.equals("R")) {
+                    cAgeLoop = false;
+                  } else {
+                    System.out.println("Please enter a valid response: G, PG, PG-13, R");
+                  }
+                }
+                
+                System.out.println("Please enter the price for the tickets:");
+                double cPrice = key.nextDouble();
+                key.nextLine();
+                
+                System.out.println("Please enter the genre of the concert: Rock, Jazz, Metal, Country, Rap, R&B, Alternative, and J-Pop");
+                String cGenre = null;
+                boolean cGenreLoop = true;
+                
+                while (cGenreLoop != false) {
+                  cGenre = key.nextLine();
+                  
+                  if (cGenre.equals("Rock") || cGenre.equals("Jazz") || cGenre.equals("Metal") ||  cGenre.equals("Country") || cGenre.equals("Rap") ||
+                      cGenre.equals("R&B") || cGenre.equals("Alternative") || cGenre.equals("J-Pop")) {
+                    cGenreLoop = false;
+                      } else {
+                        System.out.println("Please enter one of the following genres: Rock, Jazz, Metal, Country, Rap, R&B, Alternative, and J-Pop");
+                      }
+                }
+                
+                System.out.println("Please enter the number of performers for the concert,"
+                    + "followed by all the performers for the concert:");
+                System.out.println("Enter the number of performers.");
+                int performerNum = key.nextInt();
+                key.nextLine();
+                
+                String[] performers = new String[performerNum];
+                for (int i = 0; i < performers.length; i++) {
+                  System.out.println("Enter the name of the performer:");
+                  performers[i] = key.nextLine();
+                }
+                
+                System.out.println("Please enter the start time for the concert in the hh/mm AM/PM format with a space in-between. EX: 08:30 AM");
+                boolean cStartLoop = true;
+                String cStartTime = "";
+                while (cStartLoop != false) {
+                  cStartTime = key.nextLine();
+                  if (cStartTime.length() != 8) {
+                    System.out.println("Invalid time format, please try again.");
+                  } else {
+                      int hour = Integer.parseInt(cStartTime.substring(0,2));
+                      int minute = Integer.parseInt(cStartTime.substring(3,5));
+                      String am_PM = cStartTime.substring(6,8);
+                      if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equals("AM") || am_PM.equals("PM"))) {
+                        cStartLoop = false;
+                      } else {
+                        System.out.println("INVALID FORMAT");
+                      }
+                  }
+                }
+                
+                System.out.println("Please enter the end time for the concert in the hh/mm AM/PM format with a space in-between. EX: 08:30 AM");
+                boolean cEndLoop = true;
+                String cEndTime = "";
+                while (cEndLoop != false) {
+                  cEndTime = key.nextLine();
+                  if (cEndTime.length() != 8) {
+                    System.out.println("Invalid time format, please try again.");
+                  } else {
+                      int hour = Integer.parseInt(cEndTime.substring(0,2));
+                      int minute = Integer.parseInt(cEndTime.substring(3,5));
+                      String am_PM = cEndTime.substring(6,8);
+                      if (hour <= 12 && hour > -1 && minute <= 60 && minute > -1 && (am_PM.equals("AM") || am_PM.equals("PM"))) {
+                        cEndLoop = false;
+                      } else {
+                        System.out.println("INVALID FORMAT");
+                      }     
+                  }
+                }
+                
+                System.out.println("Enter the venue that the concert is going to be shown at:");
+                boolean cVenLoop = true;
+                Venue cReturnVenue = new Venue("");
+                
+                while (cVenLoop != false) {
+                 String venueName = key.nextLine();
+                 
+                 for (int i = 0; i < ts.venues.size(); i++) {
+                   if (ts.venues.get(i).getName().equalsIgnoreCase(venueName)) {
+                     cReturnVenue = ts.venues.get(i);
+                     cVenLoop = false;
+                   } else {
+                     System.out.println("That venue does not exist, please enter another venue name");
+                   }
+                 }
+               }
+                
+                System.out.println("Enter the number of the theater that the play is going to be shown at:");
+                boolean cTheaLoop = true;
+                int cTheaterNum = 0;
+                while(cTheaLoop != false) {
+                  theaterNum = key.nextInt();
+                  if (cReturnVenue.theaters.get(cTheaterNum -1) == null) {
+                  System.out.println("Sorry that theater does not exist, please enter a valid theater.");
+                } else {
+                  cTheaLoop = false;
+                }
+               }
+                
+                Concert returnConcert= new Concert (cReturnVenue, cReturnVenue.theaters.get(cTheaterNum-1), cStartTime, cEndTime, 
+                    cName, cDescription, cAgeRating, cPrice, cGenre, performers);
+                ts.addEvent(cReturnVenue.theaters.get(cTheaterNum-1), returnConcert);
+                System.out.println("Successfully Added Event!");
+                quit = true;
+                break;
+                
+                default:
+                  System.out.println("Invalid Selection");
+                  break;                
 	      }
 	     } 
 	    }
