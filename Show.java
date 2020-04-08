@@ -32,6 +32,8 @@ public class Show extends Event {
 		super(venue, theater, startTime, endTime);
 		this.name = name;
 		this.description = description;
+		this.userRating = new ArrayList<Double>();
+		this.reviews = new ArrayList<String>();
 		this.ageRating = ageRating;
 		this.price = price;
 		this.genre = genre;
