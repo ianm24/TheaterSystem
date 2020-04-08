@@ -31,7 +31,13 @@ public class Event {
 	 * Returns all the information about the Event
 	 */
 	public String toString() {
-		return "Venue: " + this.venue + "\nTheater: " + this.theater + "\nStart Time: " + this.startTime
+		int theaterNum = 0;
+		for(int i = 0; i < this.venue.theaters.size(); i++) {
+			if(this.venue.theaters.get(i) == this.theater) {
+				theaterNum = i + 1;
+			}
+		}
+		return "Venue: " + this.venue.getName() + "\nTheater: " + theaterNum + "\nStart Time: " + this.startTime
 				+ "\nEnd Time: " + this.endTime;
 	}
 }
