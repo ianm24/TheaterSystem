@@ -13,8 +13,8 @@ public class TheaterSystem {
 	private static final String TICKET_DIRECTORY = "src/TheaterSystem/";
 	private static final String TICKET_END = "ticket.txt";
 	private ArrayList<User> accounts;
-	public Account currentAccount;
-	public String userAccountType;
+	public Account currentAccount = new Guest();
+	public String userAccountType = "Guest";
 	public ArrayList<Venue> venues;
 
 	/**
