@@ -121,8 +121,13 @@ public class TheaterSystemUI {
           System.out.println("Invalid Input.");
         }
       }
+      if(isAdmin == true && isEmployee == true) {
+        System.out.println("Sorry, something has gone wrong. You cannot be both an admin and an employee.");
+      }
+      else {
       ts.createAccount(firstName, lastName, phoneNumber, password, isEmployee, isAdmin);
       tsUI.checkAccountType(ts.login(firstName, lastName, password));
+      }
 	}
 
 	/**
