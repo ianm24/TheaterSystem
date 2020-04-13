@@ -1,0 +1,7 @@
+******************************
+*****     Guest's Ticket     *****
+   Show: Cool Movie
+   Start time: 09:35 AM
+   End time: 11:00 AM
+   Your Seat is: a1
+******************************
