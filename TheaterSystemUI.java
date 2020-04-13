@@ -914,10 +914,10 @@ public class TheaterSystemUI {
           char row = key.nextLine().charAt(0);
           System.out.println("Enter the number of the column of the seat you would like:");
           int col = key.nextInt();
-          ts.purchaseTicket(show, row, col);
+          System.out.println(ts.purchaseTicket(show, row, col));
         }
         else if (response.equalsIgnoreCase("no")) {
-          ts.purchaseTicket(show);
+          System.out.println(ts.purchaseTicket(show));
         }
         else {
           System.out.println("Incorrect input, ticket purchasing cancelled.");
@@ -969,7 +969,7 @@ public class TheaterSystemUI {
 				System.out.println("Make sure your rating is between 0 and 10");
 			}
 		}
-		key.hasNextLine();
+		key.nextLine();
 		System.out.println("Please enter a review:");
 		String review = key.nextLine();
 		currShow.addRating(rating, review);

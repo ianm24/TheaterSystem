@@ -10,6 +10,8 @@ import java.util.ArrayList;
  *
  */
 public class TheaterSystem {
+	private static final String TICKET_DIRECTORY = "src/TheaterSystem/";
+	private static final String TICKET_END = "ticket.txt";
 	private ArrayList<User> accounts;
 	public Account currentAccount;
 	public String userAccountType;
@@ -217,10 +219,13 @@ public class TheaterSystem {
 		String print = "";
 		Seat userSeat = this.nextSeatSearch(show.theater);
 		userSeat.isReserved = true;
-		this.currentAccount.ticketsPurchased++;
-		if (this.currentAccount.ticketsPurchased == 11) {
-			print += "Congratulations this ticket is free!\n";
-			this.currentAccount.ticketsPurchased -= 10;
+		if (!this.userAccountType.equalsIgnoreCase("guest")) {
+			this.currentAccount.ticketsPurchased++;
+			
+			if (this.currentAccount.ticketsPurchased == 11) {
+				print += "Congratulations this ticket is free!\n";
+				this.currentAccount.ticketsPurchased -= 10;
+			}
 		}
 		print += this.printTicket(show, userSeat);
 		return print;
@@ -236,10 +241,14 @@ public class TheaterSystem {
 		String print = "";
 		Seat userSeat = this.seatSearch(show.theater, row, col);
 		userSeat.isReserved = true;
-		this.currentAccount.ticketsPurchased++;
-		if (this.currentAccount.ticketsPurchased == 11) {
-			print += "Congratulations this ticket is free!\n";
-			this.currentAccount.ticketsPurchased -= 10;
+		
+		if (!this.userAccountType.equalsIgnoreCase("guest")) {
+			this.currentAccount.ticketsPurchased++;
+			
+			if (this.currentAccount.ticketsPurchased == 11) {
+				print += "Congratulations this ticket is free!\n";
+				this.currentAccount.ticketsPurchased -= 10;
+			}
 		}
 		print += this.printTicket(show, userSeat);
 		return print;
@@ -261,7 +270,7 @@ public class TheaterSystem {
 	 */
 	public String printTicket(Show show, Seat seat) {
 		try {
-            FileWriter writer = new FileWriter(show.name+"ticket.txt");
+            FileWriter writer = new FileWriter(TICKET_DIRECTORY+show.name+TICKET_END);
             writer.write("******************************\n");
             writer.write("*****     " +currentAccount.firstName+ "'s Ticket     *****\n");
             writer.write("   Show: "+show.name+"\n");
