@@ -36,35 +36,23 @@ public class Play extends Show {
    * Displays all the information for a concert
    */
   public String toString() {
-    String bosses = null;
     
     //adding actors
+    String bosses = "\nActors: ";
     for (int i = 0; i < this.actors.length; i++) {
-      if (i == 0) {
-        bosses = "\nActors: " + actors[i];
-      }
-      
       bosses += "\n" + actors[i];
     }
     
     //adding producers
     bosses += "\nProducers: ";
     for (int i = 0; i < this.producers.length; i++) {
-      if (i == 0) {
-        bosses = producers[i];
-      }
-      
       bosses += "\n" + producers[i];
     }
     
-    //adding directors
-    bosses += "\nDirectors: ";
+    //adding playwrites
+    bosses += "\nPlaywrites: ";
     for (int i = 0; i < this.actors.length; i++) {
-      if (i == 0) {
-        bosses = "\nActors: " + playwrites[i];
-      }
-      
-      bosses += "\n" + playwrites[i];
+    	bosses += "\n" + playwrites[i]; 
     }
     
     return super.toString() + bosses;

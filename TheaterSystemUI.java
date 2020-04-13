@@ -560,7 +560,6 @@ public class TheaterSystemUI {
 	            int theaterNum = 0;
 	            while(theaLoop != false) {
 	              theaterNum = key.nextInt();
-	              System.out.println(theaterNum);
 	              if (returnVenue.theaters.get(theaterNum -1) == null) {
 	              System.out.println("Sorry that theater does not exist, please enter a valid theater.");
 	            } else {
@@ -647,7 +646,7 @@ public class TheaterSystemUI {
                 
                 String[] playwriters = new String[playwriteNum];
                 for (int i = 0; i < playwriters.length; i++) {
-                  System.out.println("Enter the name of the directors:");
+                  System.out.println("Enter the name of the playwrites:");
                   playwriters[i] = key.nextLine();
                 }
                 
@@ -702,9 +701,10 @@ public class TheaterSystemUI {
                    if (ts.venues.get(i).getName().equalsIgnoreCase(venueName)) {
                      pReturnVenue = ts.venues.get(i);
                      pVenLoop = false;
-                   } else {
-                     System.out.println("That venue does not exist, please enter another venue name");
                    }
+                 }
+                 if(pVenLoop) {
+                	 System.out.println("That venue does not exist, please enter another venue name");
                  }
                }
                 
@@ -712,7 +712,7 @@ public class TheaterSystemUI {
                 boolean pTheaLoop = true;
                 int pTheaterNum = 0;
                 while(pTheaLoop != false) {
-                  theaterNum = key.nextInt();
+                  pTheaterNum = key.nextInt();
                   if (pReturnVenue.theaters.get(pTheaterNum -1) == null) {
                   System.out.println("Sorry that theater does not exist, please enter a valid theater.");
                 } else {
