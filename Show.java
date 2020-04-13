@@ -43,8 +43,13 @@ public class Show extends Event {
 	 * Displays all the information about the show
 	 */
 	public String toString() {
+		String reviewString = "";
+		for(String review : this.reviews) {
+			reviewString += "\n\t"+review;
+		}
 		return super.toString() + "\nName:" + this.name + "\nDescription:" + this.description + "\nAge Rating:"
-				+ this.ageRating + "\nPrice: $" + this.price + "\nGenre: " + this.genre;
+				+ this.ageRating + "\nPrice: $" + this.price + "\nGenre: " + this.genre + "\nUser Rating: " + this.getRating()
+				+ "\nReviews:" + reviewString;
 	}
 
 	/**

@@ -33,7 +33,6 @@ public class JSONHandler extends JSONConstants{
 			for(int i = 0; i < JSONVenues.size(); i++) {
 				JSONObject JSONVenue = (JSONObject)JSONVenues.get(i);
 				String venueName = (String)JSONVenue.get(VENUE_NAME);
-				System.out.println(venueName);
 				Venue venue = new Venue(venueName);
 				
 				JSONArray JSONTheaters = (JSONArray)JSONVenue.get(THEATERS);
@@ -180,7 +179,6 @@ public class JSONHandler extends JSONConstants{
 				}
 				venues.add(venue);
 			}
-			
 			return venues;
 			
 		} catch(Exception e) {
@@ -381,7 +379,7 @@ public class JSONHandler extends JSONConstants{
 			for(int i = 0; i < play.playwrites.length; i++) {
 				playwrites.add(play.playwrites[i]);
 			}
-			showDetails.put(PLAY_PLAYWRITES, play.playwrites);
+			showDetails.put(PLAY_PLAYWRITES, playwrites);
 		} else if(show.getClass().getName().contains("Concert")) {
 			Concert concert = (Concert) show;
 			JSONArray performers = new JSONArray();

@@ -1,1 +1,1 @@
-[{"firstName":"Ian","lastName":"McDowell","password":"badPassword","isEmployee":false,"phoneNumber":"8675309","isAdmin":true}]
+[{"firstName":"Ian","lastName":"McDowell","password":"badPassword","isEmployee":false,"phoneNumber":"8675309","isAdmin":true},{"firstName":"Joe","lastName":"Jones","password":"12345","isEmployee":false,"phoneNumber":"8675309","isAdmin":false},{"firstName":"Sam","lastName":"Miller","password":"qwerty","isEmployee":true,"phoneNumber":"8675309","isAdmin":false}]

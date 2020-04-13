@@ -270,7 +270,7 @@ public class TheaterSystem {
 	 */
 	public String printTicket(Show show, Seat seat) {
 		try {
-            FileWriter writer = new FileWriter(TICKET_DIRECTORY+show.name+TICKET_END);
+            FileWriter writer = new FileWriter(TICKET_DIRECTORY+show.name+seat.row+seat.col+TICKET_END);
             writer.write("******************************\n");
             writer.write("*****     " +currentAccount.firstName+ "'s Ticket     *****\n");
             writer.write("   Show: "+show.name+"\n");
@@ -283,7 +283,7 @@ public class TheaterSystem {
             System.out.println(e);
         }
 		return "Printing your ticket..." + "\nStart Time: " + show.startTime + " \nEnd Time: " + show.endTime
-				+ "Your event: " + show.name + "\nYour Seat: " + seat.row + ":" + seat.col;
+				+ "\nYour event: " + show.name + "\nYour Seat: " + seat.row + ":" + seat.col;
 
 	}
 
