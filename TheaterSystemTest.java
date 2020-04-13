@@ -94,6 +94,30 @@ class TheaterSystemTest {
 		assertNotNull(results);
 	}
 	
+	@Test
+	void purchaseTicker() {
+		TheaterSystem ts = new TheaterSystem();
+		ts.login("Ian", "McDowell", "badPassword");
+		ts.currentAccount.ticketsPurchased = 10;
+		String results = ts.purchaseTicket(ts.searchShowName("The Jungle Book").get(0));
+		assertNotNull(results);
+	}
+	
+	@Test
+	void displaySeatsTest() {
+		TheaterSystem ts = new TheaterSystem();
+		String results = ts.displaySeats(ts.venues.get(0).theaters.get(0));
+		assertNotNull(results);
+	}
+	
+	@Test
+	void deleteReviewTest() {
+		TheaterSystem ts = new TheaterSystem();
+		Show show = ts.searchShowName("The Jungle Book").get(0);
+		ts.leaveReview(3.0, "cool show", show);
+		ts.deleteReview(3.0, "cool show", show);
+		assertEquals(show.reviews.size(), 1);
+	}
 	
 
 }

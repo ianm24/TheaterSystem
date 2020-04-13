@@ -1,7 +1,7 @@
 ******************************
 *****     Guest's Ticket     *****
-   Show: The Jungle Book
-   Start time: 04:00 PM
-   End time: 05:30 PM
-   Your Seat is: b4
+   Show: Cool Movie
+   Start time: 09:35 AM
+   End time: 11:00 AM
+   Your Seat is: a1
 ******************************
