@@ -270,7 +270,9 @@ public class TheaterSystem {
 	 */
 	public String printTicket(Show show, Seat seat) {
 		try {
+
             FileWriter writer = new FileWriter(TICKET_DIRECTORY+show.name+seat.row+seat.col+TICKET_END);
+
             writer.write("******************************\n");
             writer.write("*****     " +currentAccount.firstName+ "'s Ticket     *****\n");
             writer.write("   Show: "+show.name+"\n");
