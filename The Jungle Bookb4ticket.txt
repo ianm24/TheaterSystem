@@ -1,0 +1,7 @@
+******************************
+*****     Guest's Ticket     *****
+   Show: The Jungle Book
+   Start time: 04:00 PM
+   End time: 05:30 PM
+   Your Seat is: b4
+******************************

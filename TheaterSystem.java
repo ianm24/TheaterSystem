@@ -102,8 +102,8 @@ public class TheaterSystem {
 			User newAcc = new User(firstName, lastName, password, phoneNumber);
 			this.accounts.add(newAcc);
 			this.currentAccount = newAcc;
-			this.updateAccountType();
 		}
+		this.updateAccountType();
 		return "Account created successfully";
 	}
 
