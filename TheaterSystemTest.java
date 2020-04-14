@@ -70,7 +70,7 @@ class TheaterSystemTest {
 	void searchAgeRatingTest() {
 		TheaterSystem ts = new TheaterSystem();
 		ArrayList<Show> results = ts.searchAgeRating("G");
-		assertEquals(results.size(), 1);
+		assertEquals(results.size(), 3);
 	}
 	
 	@Test
